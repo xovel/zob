@@ -1,0 +1,20 @@
+{
+  "name": "zob",
+  "version": "1.0.0",
+  "description": "A secret plan about MVVM",
+  "author": "xovel <xovel@vip.qq.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xovel/zob.git"
+  },
+  "keywords": [
+    "zob",
+    "mvvm",
+    "js"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xovel/zob/issues"
+  },
+  "homepage": "https://github.com/xovel/zob#readme"
+}
