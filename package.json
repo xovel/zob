@@ -1,7 +1,7 @@
 {
   "name": "zob",
   "version": "1.0.1",
-  "description": "A project about code style",
+  "description": "A style guide for coding and writing.",
   "author": "xovel <xovel@vip.qq.com>",
   "repository": {
     "type": "git",
