@@ -1,7 +1,7 @@
 {
-  "name": "zob",
-  "version": "1.0.1",
-  "description": "A style guide for coding and writing.",
+  "name": "eslint-config-zob",
+  "version": "0.0.1",
+  "description": "ESLint Config for JavaScript Style",
   "author": "xovel <xovel@vip.qq.com>",
   "repository": {
     "type": "git",
@@ -9,14 +9,13 @@
   },
   "keywords": [
     "zob",
-    "js"
+    "js",
+    "eslint",
+    "config"
   ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/xovel/zob/issues"
   },
-  "homepage": "https://github.com/xovel/zob#readme",
-  "devDependencies": {
-    "js-yaml": "^3.13.1"
-  }
+  "homepage": "https://github.com/xovel/zob#readme"
 }
