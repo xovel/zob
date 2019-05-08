@@ -1,20 +1,27 @@
 extends:
+  - 'plugin:vue/base'
   - ./index.js
-
-plugins:
-  - vue
 
 rules:
 
-  # ============
+  # ================================================
   # Vue
   # `https://eslint.vuejs.org/rules/`
+  # ================================================
+
+  # ================================================
+  # Base Rules
+  # ================================================
 
   # template 中支持 eslint 注释
   vue/comment-directive: 2
 
   # 识别 jsx 中的变量
   vue/jsx-uses-vars: 2
+
+  # ================================================
+  # Priority A: Essential
+  # ================================================
 
   # 禁止在 computed 中使用异步方法
   vue/no-async-in-computed-properties: 2
@@ -117,6 +124,10 @@ rules:
   # 正确使用 v-text
   vue/valid-v-text: 2
 
+  # ================================================
+  # Priority B: Strongly Recommended
+  # ================================================
+
   # template 中的属性名使用短杠风格
   vue/attribute-hyphenation: 2
 
@@ -186,6 +197,10 @@ rules:
   # v-on 缩写
   vue/v-on-style: [2, shorthand]
 
+  # ================================================
+  # Priority C: Recommended
+  # ================================================
+
   # 属性排序
   vue/attributes-order: 0
 
@@ -197,3 +212,91 @@ rules:
 
   # template 中的 this 关键字
   vue/this-in-template: [2, never]
+
+  # ================================================
+  # Uncategorized
+  # ================================================
+
+  # 数组中使用风格统一的空格
+  vue/array-bracket-spacing: [2, never]
+
+  # 箭头函数的箭头前后的空格
+  vue/arrow-spacing: 2
+
+  # 代码块内花括号的空格
+  vue/block-spacing: 2
+
+  # 花括号风格
+  vue/brace-style: [2, 1tbs, {allowSingleLine: true}]
+
+  # 使用驼峰拼写
+  vue/camelcase: 0
+
+  # 禁止拖尾逗号
+  # 这里禁止拖尾逗号
+  vue/comma-dangle: 2
+
+  # 模板中组件名的大小写
+  vue/component-name-in-template-casing: 0
+
+  # 强制点号之前或之后换行
+  # property 表示点号与属性同行
+  # object 表示点号与对象同行
+  vue/dot-location: [2, property]
+
+  # 使用全等进行判断
+  # 这里关闭该项检查，模板中不做强制要求
+  vue/eqeqeq: 0
+
+  # 对象字面量的键和值之间的空格
+  vue/key-spacing: 2
+
+  # 关键字前后的空格
+  vue/keyword-spacing: 2
+
+  # 组件名与文件名一致
+  vue/match-component-file-name: 0
+
+  # 禁止在属性为布尔类型时指定默认值
+  vue/no-boolean-default: 0
+
+  # 禁止使用已废弃的 scope 属性
+  # Vue.js v2.5.0+
+  vue/no-deprecated-scope-attribute: 1
+
+  # 禁止空解构
+  vue/no-empty-pattern: 2
+
+  # 禁止指定的语法
+  vue/no-restricted-syntax: 0
+
+  # 对象花括号内的空格
+  vue/object-curly-spacing: 0
+
+  # 直接 export
+  vue/require-direct-export: 0
+
+  # 严格缩进
+  # 外围 indent 指定的即可，这里不做特别限制
+  vue/script-indent: 0
+
+  # 中缀操作符周围的空格
+  # 模板中不做限制
+  vue/space-infix-ops: 0
+
+  # 一元操作符前后的空格
+  # 模板中不做限制
+  vue/space-unary-ops: 0
+
+  # v-on 指令绑定的函数的 call
+  # 即令人疑惑的 foo 和 foo()
+  # 这里不做限制
+  vue/v-on-function-call: 0
+
+  # v-slot 指令的风格
+  # 是否采用 # 号进行缩写
+  # 这里不做限制
+  vue/v-slot-style: 0
+
+  # 正确使用 v-slot 指令
+  vue/valid-v-slot: 2

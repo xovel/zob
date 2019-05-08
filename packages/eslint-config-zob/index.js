@@ -8,6 +8,10 @@ module.exports = {
     browser: true,
     jquery: true
   },
+  parserOptions: {
+    ecmaVersion: 2019,
+    sourceType: 'module'
+  },
   rules: {
     'for-direction': 2,
     'getter-return': 2,
@@ -85,7 +89,8 @@ module.exports = {
     'dot-notation': [
       1,
       {
-        allowKeywords: false
+        allowKeywords: false,
+        allowPattern: 'catch'
       }
     ],
     eqeqeq: 2,
@@ -296,7 +301,7 @@ module.exports = {
     'no-whitespace-before-property': 2,
     'nonblock-statement-body-position': 0,
     'object-curly-newline': 0,
-    'object-curly-spacing': 2,
+    'object-curly-spacing': 0,
     'object-property-newline': 0,
     'one-var': 0,
     'one-var-declaration-per-line': 0,
@@ -375,7 +380,7 @@ module.exports = {
       2,
       'as-needed',
       {
-        requireForBlockBody: true
+        requireForBlockBody: false
       }
     ],
     'arrow-spacing': 2,

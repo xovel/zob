@@ -1,7 +1,7 @@
 {
   "name": "eslint-config-zob",
-  "version": "0.0.1",
-  "description": "ESLint Config for JavaScript Style",
+  "version": "0.0.2",
+  "description": "ESLint Config for `zob` systems",
   "author": "xovel <xovel@vip.qq.com>",
   "repository": {
     "type": "git",

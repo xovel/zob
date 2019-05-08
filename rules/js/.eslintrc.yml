@@ -7,6 +7,15 @@ env:
   browser: true
   jquery: true
 
+# 解析选项
+parserOptions:
+  # ECMAScript 版本
+  ecmaVersion: 2019
+  # 源码类型
+  # - script 常规脚本
+  # - module 模块化
+  sourceType: module
+
 # 指定全局变量
 # globals:
 
@@ -177,7 +186,12 @@ rules:
 
   # 强制使用点号
   # allowPattern 可以指定允许正则匹配
-  dot-notation: [1, {allowKeywords: false}]
+  # 这里放开 catch 的限制，允许 Promise 的 catch 操作
+  dot-notation:
+    - 1
+    -
+      allowKeywords: false
+      allowPattern: catch
 
   # 使用全等进行判断
   eqeqeq: 2
@@ -203,7 +217,7 @@ rules:
   # 禁止空函数
   no-empty-function: 1
 
-  # 禁止空结构
+  # 禁止空解构
   no-empty-pattern: 2
 
   # 禁止与 null 进行比较
@@ -487,7 +501,7 @@ rules:
   # 数组元素的换行
   array-element-newline: 0
 
-  # 单行代码中使用空格
+  # 代码块内花括号的空格
   block-spacing: 2
 
   # 花括号风格
@@ -685,8 +699,8 @@ rules:
   # 花括号内的换行符
   object-curly-newline: 0
 
-  # 花括号内的空格
-  object-curly-spacing: 2
+  # 对象花括号内的空格
+  object-curly-spacing: 0
 
   # 对象属性在不同的行上
   object-property-newline: 0
@@ -748,7 +762,7 @@ rules:
   # 圆括号内的空格
   space-in-parens: 2
 
-  # 中缀操作符周围有空格
+  # 中缀操作符周围的空格
   space-infix-ops: 2
 
   # 一元操作符前后的空格
@@ -792,7 +806,8 @@ rules:
   # 默认要求使用圆括号
   # as-needed 表示能省则省
   # requireForBlockBody 参数表示函数体带花括号
-  arrow-parens: [2, as-needed, {requireForBlockBody: true}]
+  # false 表示关闭，单参数也不要带括号
+  arrow-parens: [2, as-needed, {requireForBlockBody: false}]
 
   # 箭头函数的箭头前后的空格
   # 默认前后都要有空格

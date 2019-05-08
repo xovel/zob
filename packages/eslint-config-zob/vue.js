@@ -2,10 +2,8 @@
 
 module.exports = {
   extends: [
+    'plugin:vue/base',
     './index.js'
-  ],
-  plugins: [
-    'vue'
   ],
   rules: {
     'vue/comment-directive': 2,
@@ -97,6 +95,42 @@ module.exports = {
     'vue/this-in-template': [
       2,
       'never'
-    ]
+    ],
+    'vue/array-bracket-spacing': [
+      2,
+      'never'
+    ],
+    'vue/arrow-spacing': 2,
+    'vue/block-spacing': 2,
+    'vue/brace-style': [
+      2,
+      '1tbs',
+      {
+        allowSingleLine: true
+      }
+    ],
+    'vue/camelcase': 0,
+    'vue/comma-dangle': 2,
+    'vue/component-name-in-template-casing': 0,
+    'vue/dot-location': [
+      2,
+      'property'
+    ],
+    'vue/eqeqeq': 0,
+    'vue/key-spacing': 2,
+    'vue/keyword-spacing': 2,
+    'vue/match-component-file-name': 0,
+    'vue/no-boolean-default': 0,
+    'vue/no-deprecated-scope-attribute': 1,
+    'vue/no-empty-pattern': 2,
+    'vue/no-restricted-syntax': 0,
+    'vue/object-curly-spacing': 0,
+    'vue/require-direct-export': 0,
+    'vue/script-indent': 0,
+    'vue/space-infix-ops': 0,
+    'vue/space-unary-ops': 0,
+    'vue/v-on-function-call': 0,
+    'vue/v-slot-style': 0,
+    'vue/valid-v-slot': 2
   }
 }
