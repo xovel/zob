@@ -1,5 +1,5 @@
 /**
- * @fileoverview Detect the format about comment
+ * @fileoverview ESLint plugin for `zob` systems.
  * @author xovel
  */
 
