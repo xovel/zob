@@ -186,12 +186,8 @@ rules:
 
   # 强制使用点号
   # allowPattern 可以指定允许正则匹配
-  # 这里放开 catch 的限制，允许 Promise 的 catch 操作
-  dot-notation:
-    - 1
-    -
-      allowKeywords: false
-      allowPattern: catch
+  # 关闭该项的检测
+  dot-notation: 0
 
   # 使用全等进行判断
   eqeqeq: 2

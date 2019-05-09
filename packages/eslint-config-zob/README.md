@@ -4,6 +4,10 @@ ESLint Config for `zob` systems.
 
 ## History
 
+### v0.0.3
+
+- Disable `dot-notation`.
+
 ### v0.0.2
 
 #### Config

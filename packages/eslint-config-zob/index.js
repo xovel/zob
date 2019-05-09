@@ -86,13 +86,7 @@ module.exports = {
       2,
       'property'
     ],
-    'dot-notation': [
-      1,
-      {
-        allowKeywords: false,
-        allowPattern: 'catch'
-      }
-    ],
+    'dot-notation': 0,
     eqeqeq: 2,
     'guard-for-in': 0,
     'no-alert': 1,
