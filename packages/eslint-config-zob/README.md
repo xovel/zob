@@ -4,6 +4,10 @@ ESLint Config for `zob` systems.
 
 ## History
 
+### v0.0.4
+
+- Remove missed vue rules (not published yet).
+
 ### v0.0.3
 
 - Disable `dot-notation`.

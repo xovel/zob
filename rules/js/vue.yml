@@ -242,7 +242,8 @@ rules:
   # 强制点号之前或之后换行
   # property 表示点号与属性同行
   # object 表示点号与对象同行
-  vue/dot-location: [2, property]
+  # 暂未发布
+  # vue/dot-location: [2, property]
 
   # 使用全等进行判断
   # 这里关闭该项检查，模板中不做强制要求
@@ -252,7 +253,8 @@ rules:
   vue/key-spacing: 2
 
   # 关键字前后的空格
-  vue/keyword-spacing: 2
+  # 暂未发布
+  # vue/keyword-spacing: 2
 
   # 组件名与文件名一致
   vue/match-component-file-name: 0
@@ -262,10 +264,12 @@ rules:
 
   # 禁止使用已废弃的 scope 属性
   # Vue.js v2.5.0+
-  vue/no-deprecated-scope-attribute: 1
+  # 暂未发布
+  # vue/no-deprecated-scope-attribute: 1
 
   # 禁止空解构
-  vue/no-empty-pattern: 2
+  # 暂未发布
+  # vue/no-empty-pattern: 2
 
   # 禁止指定的语法
   vue/no-restricted-syntax: 0
@@ -299,4 +303,5 @@ rules:
   vue/v-slot-style: 0
 
   # 正确使用 v-slot 指令
-  vue/valid-v-slot: 2
+  # 暂未发布
+  # vue/valid-v-slot: 2

@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-zob",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "ESLint Config for `zob` systems",
   "author": "xovel <xovel@vip.qq.com>",
   "repository": {

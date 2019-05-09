@@ -112,17 +112,10 @@ module.exports = {
     'vue/camelcase': 0,
     'vue/comma-dangle': 2,
     'vue/component-name-in-template-casing': 0,
-    'vue/dot-location': [
-      2,
-      'property'
-    ],
     'vue/eqeqeq': 0,
     'vue/key-spacing': 2,
-    'vue/keyword-spacing': 2,
     'vue/match-component-file-name': 0,
     'vue/no-boolean-default': 0,
-    'vue/no-deprecated-scope-attribute': 1,
-    'vue/no-empty-pattern': 2,
     'vue/no-restricted-syntax': 0,
     'vue/object-curly-spacing': 0,
     'vue/require-direct-export': 0,
@@ -130,7 +123,6 @@ module.exports = {
     'vue/space-infix-ops': 0,
     'vue/space-unary-ops': 0,
     'vue/v-on-function-call': 0,
-    'vue/v-slot-style': 0,
-    'vue/valid-v-slot': 2
+    'vue/v-slot-style': 0
   }
 }
