@@ -24,7 +24,7 @@ function demo(text) {
       ],
       invalid: [
         {
-          code: `// 作者xovel`,
+          code: `// xovel一时心血来潮写了这个插件`,
           errors: [{
             message: 'Need space',
             type: 'Line'

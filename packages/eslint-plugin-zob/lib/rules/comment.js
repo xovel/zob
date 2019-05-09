@@ -10,9 +10,9 @@ module.exports = {
   meta: {
     type: 'suggestion',
     docs: {
-      description: '格式化注释中的中文',
+      description: '自动在注释中的中文字和半形的英文、数字、符号之间插入空白。',
       category: 'Stylistic Issues',
-      url: 'https://xovel.cn/zob/rules/comment.html'
+      url: 'https://github.com/xovel/zob/blob/master/packages/eslint-plugin-zob/docs/comment.md'
     },
     fixable: 'whitespace',
     schema: [] // no options
@@ -23,17 +23,17 @@ module.exports = {
       Program() {
         sourceCode
           .getAllComments()
-          .filter(token => token.type !== 'Shebang')
+          .filter(({type}) => type === 'Block' || type === 'Line')
           .forEach(node => {
-            const value = node.value
+            const {value, type} = node
+            // 盘古之白
             const result = pangu.spacing(value)
             if (result !== value) {
-              // 盘古之白
               context.report({
                 node: node,
                 message: 'Need space',
                 fix: function (fixer) {
-                  return fixer.replaceText(node, result)
+                  return fixer.replaceText(node, type === 'Block' ? `/*${result}*/` : `//${result}`)
                 }
               })
             }
