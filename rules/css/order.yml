@@ -1,0 +1,110 @@
+extends:
+  - ./index.js
+
+plugins:
+  - stylelint-order
+
+rules:
+
+  # 语句块的顺序
+  order/order:
+    -
+      - custom-properties # 自定义属性
+      - dollar-variables # $ 变量
+      - at-variables # @ 变量
+      - declarations # 样式声明
+      - less-mixins # Less mixin
+      - rules # 嵌套规则
+      - at-rules # 嵌套 @ 规则
+    -
+      disableFix: false
+      unspecified: ignore
+
+  # 属性顺序
+  order/properties-order:
+    -
+      # Positioning
+      - position
+      - top
+      - right
+      - bottom
+      - left
+      - z-index
+      # Box Model
+      - float
+      - clear
+      - display
+      - flex
+      - order
+      - grid
+      - table-layout
+      - list-style
+      - box-sizing
+      # Dimension
+      - width
+      - height
+      - padding
+      - border
+      - border-radius
+      - outline
+      - margin
+      # Stylish
+      - color
+      - background
+      - isolation
+      - clip-path
+      - mask
+      - filter
+      - box-shadow
+      - opacity
+      - visibility
+      # Content
+      - overflow
+      - vertical-align
+      - columns
+      # Render
+      - writing-mode
+      - direction
+      - font
+      - text-overflow
+      - white-space
+      - word-wrap
+      - word-break
+      - line-break
+      - text-align
+      - letter-spacing
+      - word-spacing
+      - text-transform
+      # Decoration
+      - quotes
+      - text-indent
+      - text-emphasis
+      - text-decoration
+      - text-shadow
+      # Transform
+      - transform
+      - perspective
+      - backface-visibility
+      # Animation
+      - transition
+      - animation
+      # Scroll
+      - scroll-behavior
+      # Behavior
+      - resize
+      - cursor
+      - touch-action
+      - caret-color
+      - ime-mode
+      # Misc
+      - object-fit
+      - content
+      - user-select
+    -
+      unspecified: ignore
+      # emptyLineBeforeUnspecified: null
+      # emptyLineMinimumPropertyThreshold: 4
+
+  # 属性按字母排序
+  # 按上一个规则执行，这里关闭之
+  order/properties-alphabetical-order: null

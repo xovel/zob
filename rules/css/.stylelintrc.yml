@@ -1,0 +1,1224 @@
+root: true
+
+# 忽略注释
+ignoreDisables: true
+
+# 规则
+rules:
+
+  # 根据官网制定
+  # https://stylelint.io/user-guide/rules/list
+
+  # =======================
+  # Possible errors
+  # =======================
+
+  # -----------------------
+  # Color
+  # -----------------------
+
+  # Disallow invalid hex colors.
+  # 禁止无效的 16 进制颜色。
+  color-no-invalid-hex: true
+
+  # -----------------------
+  # Font family
+  # -----------------------
+
+  # Disallow duplicate font family names.
+  # 禁止重复的字体族名称。
+  font-family-no-duplicate-names:
+    - true
+    - ignoreFontFamilyNames: []
+
+  # Disallow missing generic families in lists of font family names.
+  # 禁止在字体族名称列表中缺少通用字体族关键字。
+  # 这里关闭之
+  # TODO
+  font-family-no-missing-generic-family-keyword: null
+
+  # -----------------------
+  # Function
+  # -----------------------
+
+  # Disallow an invalid expression within calc functions.
+  # 禁止在 calc 函数中使用无效表达式。
+  function-calc-no-invalid: true
+
+  # Disallow an unspaced operator within calc functions.
+  # 禁止在 calc 函数中使用没有间隔的运算符。
+  function-calc-no-unspaced-operator: true
+
+  # Disallow direction values in linear-gradient() calls that are not valid according to the standard syntax.
+  # 禁止在 linear-gradient() 中调用不符合标准语法的无效方向值。
+  function-linear-gradient-no-nonstandard-direction: true
+
+  # -----------------------
+  # String
+  # -----------------------
+
+  # Disallow (unescaped) newlines in strings.
+  # 禁止字符串中的(未转义)换行符。
+  string-no-newline: true
+
+  # -----------------------
+  # Unit
+  # -----------------------
+
+  # Disallow unknown units.
+  # 禁止未知的单位。
+  unit-no-unknown:
+    - true
+    -
+      ignoreUnits: []
+      ignoreFunctions: []
+
+  # -----------------------
+  # Property
+  # -----------------------
+
+  # Disallow unknown properties.
+  # 禁止未知的属性。
+  property-no-unknown:
+    - true
+    -
+      ignoreProperties: []
+      checkPrefixed: true
+
+  # -----------------------
+  # Keyframe declaration
+  # -----------------------
+
+  # Disallow !important within keyframe declarations.
+  # 禁止关键帧声明的 !important。
+  keyframe-declaration-no-important: true
+
+  # -----------------------
+  # Declaration block
+  # -----------------------
+
+  # Disallow duplicate properties within declaration blocks.
+  # 禁止声明块的重复属性。
+  declaration-block-no-duplicate-properties:
+    - true
+    -
+      # 忽略连续的重复属性。
+      ignore:
+        - consecutive-duplicates-with-different-values
+
+  # Disallow shorthand properties that override related longhand properties.
+  # 禁止简写属性覆盖相关的扩写属性。
+  declaration-block-no-shorthand-property-overrides: true
+
+  # -----------------------
+  # Block
+  # -----------------------
+
+  # Disallow empty blocks.
+  # 禁止空块。
+  block-no-empty: true
+
+  # -----------------------
+  # Selector
+  # -----------------------
+
+  # Disallow unknown pseudo-class selectors.
+  # 禁止未知的伪类选择器。
+  selector-pseudo-class-no-unknown:
+    - true
+    - ignorePseudoClasses: []
+
+  # Disallow unknown pseudo-element selectors.
+  # 禁止未知的伪元素选择器。
+  selector-pseudo-element-no-unknown:
+    - true
+    - ignorePseudoElements: [v-deep]
+
+  # Disallow unknown type selectors.
+  # 禁止未知的类型选择器。
+  selector-type-no-unknown:
+    - true
+    -
+      ignoreTypes:
+        - !!str /deep/
+
+  # -----------------------
+  # Media feature
+  # -----------------------
+
+  # Disallow unknown media feature names.
+  # 禁止未知的媒体功能名。
+  media-feature-name-no-unknown:
+    - true
+    -
+      ignoreMediaFeatureNames: []
+
+  # -----------------------
+  # At-rule
+  # -----------------------
+
+  # Disallow unknown at-rules.
+  # 禁止未知的@规则。
+  at-rule-no-unknown: true
+
+  # -----------------------
+  # Comment
+  # -----------------------
+
+  # Disallow empty comments.
+  # 禁止空注释。
+  comment-no-empty: true
+
+  # -----------------------
+  # General / Sheet
+  # -----------------------
+
+  # Disallow selectors of lower specificity from coming after overriding selectors of higher specificity.
+  # 禁止在具有较高优先级的选择器后出现被其覆盖的较低优先级的选择器。
+  no-descending-specificity: true
+
+  # Disallow duplicate @import rules within a stylesheet.
+  # 禁止在样式表中使用重复的 @import 规则。
+  no-duplicate-at-import-rules: true
+
+  # Disallow duplicate selectors within a stylesheet.
+  # 禁止样式表中的重复选择器。
+  no-duplicate-selectors: true
+
+  # Disallow empty sources.
+  # 禁止空源码。
+  no-empty-source: true
+
+  # Disallow extra semicolons (Autofixable).
+  # 禁止额外的分号（可自动修复）。
+  no-extra-semicolons: true
+
+  # Disallow double-slash comments (//...) which are not supported by CSS.
+  # 禁止 CSS 不支持并可能导致意外结果的双斜杠注释（//...）。
+  no-invalid-double-slash-comments: true
+
+  # =======================
+  # Limit language features
+  # =======================
+
+  # -----------------------
+  # Alpha-value
+  # -----------------------
+
+  # Specify percentage or number notation for alpha-values (Autofixable).
+  # 透明度的值的标识方式
+  alpha-value-notation: number
+
+  # -----------------------
+  # Hue
+  # -----------------------
+
+  # Specify number or angle notation for degree hues (Autofixable).
+  # hue 角度标识方式
+  hue-degree-notation: number
+
+  # -----------------------
+  # Color
+  # -----------------------
+
+  # Specify modern or legacy notation for applicable color-functions (Autofixable).
+  # 颜色函数的标识方式
+  # 现代 CSS 支持在颜色函数的参数中可以使用空格隔开参数，不再需要逗号
+  color-function-notation: null
+
+  # Require (where possible) or disallow named colors.
+  # 要求（如果可能）或禁止命名颜色。
+  color-named: null
+
+  # Disallow hex colors.
+  # 禁止 16 进制颜色。
+  color-no-hex: null
+
+  # -----------------------
+  # Length
+  # -----------------------
+
+  # Disallow units for zero lengths (Autofixable).
+  # 禁止零长度的单位（可自动修复）。
+  length-zero-no-unit:
+    - true
+    -
+      ignore:
+        - custom-properties
+
+  # -----------------------
+  # Font weight
+  # -----------------------
+
+  # Require numeric or named (where possible) font-weight values. Also, when named values are expected, require only valid names.
+  # 要求 font-weight 使用数字或命名（如果可能）值。此外，当需要命名值时，要求名称有效。
+  font-weight-notation: null
+
+  # -----------------------
+  # Function
+  # -----------------------
+
+  # Specify a list of allowed functions.
+  # 指定禁用的函数的白名单。
+  function-allowed-list: null
+
+  # Specify a list of disallowled functions. (deprecated)
+  # 指定禁用的函数的黑名单。
+  # 使用 function-disallowed-list
+  # function-blacklist: null
+
+  # Specify a list of disallowed functions.
+  # 指定禁用的函数的黑名单。
+  function-disallowed-list: null
+
+  # Disallow scheme-relative urls.
+  # 禁止相对协议 URL。
+  function-url-no-scheme-relative: null
+
+  # Specify a list of allowed URL schemes.
+  function-url-scheme-allowed-list: null
+
+  # Specify a list of disallowed URL schemes. (deprecated)
+  # 指定禁用的 URL 协议的黑名单。
+  # 使用 function-url-scheme-disallowed-list
+  # function-url-scheme-blacklist: null
+
+  # Specify a list of disallowed URL schemes.
+  function-url-scheme-disallowed-list: null
+
+  # Specify a list of allowed URL schemes. (deprecated)
+  # 指定允许的 URL 协议的白名单。
+  # 使用 function-url-scheme-allowed-list
+  # function-url-scheme-whitelist: null
+
+  # Specify a list of allowed functions. (deprecated)
+  # 指定允许的函数的白名单。
+  function-whitelist: null
+
+  # -----------------------
+  # Keyframes
+  # -----------------------
+
+  # Specify a pattern for keyframe names.
+  # 指定关键帧名的模式。
+  # TODO
+  keyframes-name-pattern: null
+
+  # -----------------------
+  # Number
+  # -----------------------
+
+  # Limit the number of decimal places allowed in numbers.
+  # 限制数字中允许的小数位数
+  number-max-precision:
+    - 2
+    -
+      ignoreUnits:
+        - '%'
+        - em
+        - px
+
+  # -----------------------
+  # Time
+  # -----------------------
+
+  # Specify the minimum number of milliseconds for time values.
+  # 指定时间值的最小毫秒数。
+  time-min-milliseconds: null
+
+  # -----------------------
+  # Unit
+  # -----------------------
+
+  # Specify a list of allowed units.
+  unit-allowed-list: null
+
+  # Specify a list of disallowed units. (deprecated)
+  # 指定禁用的单位的黑名单。
+  # 使用 unit-disallowed-list
+  # unit-blacklist: null
+
+  # Specify a list of disallowed units.
+  unit-disallowed-list: null
+
+  # Specify a list of allowed units. (deprecated)
+  # 指定允许的单位的白名单。
+  # 使用 unit-allowed-list
+  # unit-whitelist: null
+
+  # -----------------------
+  # Shorthand property
+  # -----------------------
+
+  # Disallow redundant values in shorthand properties (Autofixable).
+  # 禁止简写属性的冗余值（可自动修复）。
+  shorthand-property-no-redundant-values: true
+
+  # -----------------------
+  # Value
+  # -----------------------
+
+  # Disallow vendor prefixes for values (Autofixable).
+  # 禁止值的浏览器引擎前缀。
+  value-no-vendor-prefix:
+      - true
+      -
+        ignoreValues:
+          - grab
+          - max-content
+
+  # -----------------------
+  # Custom property
+  # -----------------------
+
+  # Specify a pattern for custom properties.
+  # 指定自定义属性的模式。
+  custom-property-pattern: null
+
+  # -----------------------
+  # Property
+  # -----------------------
+
+  # Specify a list of allowed properties.
+  property-allowed-list: null
+
+  # Specify a list of disallowed properties. (deprecated)
+  # 指定禁用的属性的黑名单。
+  # 使用 property-disallowed-list
+  # property-blacklist: null
+
+  # Specify a list of disallowed properties.
+  property-disallowed-list: null
+
+  # Disallow vendor prefixes for properties (Autofixable).
+  # 禁止属性的浏览器引擎前缀。
+  property-no-vendor-prefix:
+    - true
+    -
+      ignoreProperties:
+        - transform
+        - columns
+
+  # Specify a list of allowed properties. (deprecated)
+  # 指定允许的属性的白名单。
+  # 使用 property-allowed-list
+  # property-whitelist: null
+
+  # -----------------------
+  # Declaration
+  # -----------------------
+
+  # Disallow longhand properties that can be combined into one shorthand property.
+  # 禁止可合并为一个简写属性的扩写属性。
+  declaration-block-no-redundant-longhand-properties:
+    - true
+    -
+      ignoreShorthands:
+        - /flex-/
+
+  # Disallow !important within declarations.
+  # 禁止声明的 !important。
+  declaration-no-important: null
+
+  # Specify a list of allowed property and unit pairs within declarations.
+  declaration-property-unit-allowed-list: null
+
+  # Specify a list of disallowed property and unit pairs within declarations. (deprecated)
+  # 指定声明内禁用的属性和单位对的黑名单。
+  # 使用 declaration-property-unit-disallowed-list
+  # declaration-property-unit-blacklist: null
+
+  # Specify a list of disallowed property and unit pairs within declarations.
+  declaration-property-unit-disallowed-list: null
+
+  # Specify a list of allowed property and unit pairs within declarations. (deprecated)
+  # 指定声明内允许的属性和单位对的白名单。
+  # 使用 declaration-property-unit-allowed-list
+  # declaration-property-unit-whitelist: null
+
+  # Specify a list of allowed property and value pairs within declarations.
+  declaration-property-value-allowed-list: null
+
+  # Specify a list of disallowed property and value pairs within declarations. (deprecated)
+  # 指定声明内禁用的属性和值对的黑名单。
+  # 使用 declaration-property-value-disallowed-list
+  # declaration-property-value-blacklist: null
+
+  # Specify a list of disallowed property and value pairs within declarations.
+  declaration-property-value-disallowed-list: null
+
+  # Specify a list of allowed property and value pairs within declarations. (deprecated)
+  # 指定声明内允许的属性和值对的白名单。
+  # 使用 declaration-property-value-allowed-list
+  # declaration-property-value-whitelist: null
+
+  # -----------------------
+  # Declaration block
+  # -----------------------
+
+  # Limit the number of declarations within a single-line declaration block.
+  # 限制一个单行声明块中声明的数量
+  declaration-block-single-line-max-declarations: 4
+
+  # -----------------------
+  # Selector
+  # -----------------------
+
+  # Specify a list of disallowed attribute names.
+  selector-attribute-name-disallowed-list: null
+
+  # Specify a list of allowed attribute operators.
+  selector-attribute-operator-allowed-list: null
+
+  # Specify a list of disallowed attribute operators. (deprecated)
+  # 指定禁用的属性运算符的黑名单。
+  # 使用 selector-attribute-operator-disallowed-list
+  # selector-attribute-operator-blacklist: null
+
+  # Specify a list of disallowed attribute operators.
+  selector-attribute-operator-disallowed-list: null
+
+  # Specify a list of allowed attribute operators. (deprecated)
+  # 指定允许的属性运算符的白名单。
+  # 使用 selector-attribute-operator-allowed-list
+  # selector-attribute-operator-whitelist: null
+
+  # Specify a pattern for class selectors.
+  # 指定类选择器的模式。
+  selector-class-pattern: null
+
+  # Specify a list of allowed combinators.
+  selector-combinator-allowed-list: null
+
+  # Specify a list of disallowed combinators. (deprecated)
+  # 指定禁用的组合选择器的黑名单。
+  # 使用 selector-combinator-disallowed-list
+  # selector-combinator-blacklist: null
+
+  # Specify a list of disallowed combinators.
+  selector-combinator-disallowed-list: null
+
+  # Specify a list of allowed combinators. (deprecated)
+  # 指定允许的组合选择器的白名单。
+  # 使用 selector-combinator-allowed-list
+  # selector-combinator-whitelist: null
+
+  # Specify a pattern for ID selectors.
+  # 指定 ID 选择器的模式。
+  selector-id-pattern: null
+
+  # Limit the number of attribute selectors in a selector.
+  # 限制一个选择器中属性选择器的数量
+  selector-max-attribute: 2
+
+  # Limit the number of classes in a selector.
+  # 限制一个选择器中类的数量
+  selector-max-class: 5
+
+  # Limit the number of combinators in a selector.
+  # 限制一个选择器中组合选择器的数量
+  selector-max-combinators: 5
+
+  # Limit the number of compound selectors in a selector.
+  # 限制一个选择器中复合选择器的数量
+  selector-max-compound-selectors: 5
+
+  # Limit the number of adjacent empty lines within selectors (Autofixable).
+  # 限制选择器中相邻空行的数量
+  # TODO
+  selector-max-empty-lines: 0
+
+  # Limit the number of ID selectors in a selector.
+  # 限制一个选择器中 ID 选择器的数量
+  selector-max-id: 1
+
+  # Limit the number of pseudo-classes in a selector.
+  # 限制一个选择器中伪类的数量
+  selector-max-pseudo-class: 2
+
+  # Limit the specificity of selectors.
+  # 限制选择器的优先级。
+  selector-max-specificity: 1,5,3
+
+  # Limit the number of type in a selector.
+  # 限制一个选择器中类型选择器的数量
+  selector-max-type:
+    - 3
+    -
+      ignore:
+        - child
+        - compounded
+        - next-sibling
+
+  # Limit the number of universal selectors in a selector.
+  # 限制一个选择器中通用选择器的数量
+  selector-max-universal: 1
+
+  # Specify a pattern for the selectors of rules nested within rules.
+  # 指定嵌套规则的选择器的模式。
+  selector-nested-pattern: null
+
+  # Disallow qualifying a selector by type.
+  # 禁止用类型选择器来限定一个选择器。
+  selector-no-qualifying-type:
+    - true
+    -
+      ignore:
+        - attribute
+        - class
+
+  # Disallow vendor prefixes for selectors (Autofixable).
+  # 禁止选择器的浏览器引擎前缀。
+  selector-no-vendor-prefix:
+    - true
+    - ignoreSelectors:
+        - /-moz-.*/
+
+  # Specify a list of allowed pseudo-class selectors.
+  selector-pseudo-class-allowed-list: null
+
+  # Specify a list of disallowed pseudo-class selectors. (deprecated)
+  # 指定禁用的伪类选择器的黑名单。
+  # 使用 selector-pseudo-class-disallowed-list
+  # selector-pseudo-class-blacklist: null
+
+  # Specify a list of disallowed pseudo-class selectors.
+  selector-pseudo-class-disallowed-list: null
+
+  # Specify a list of allowed pseudo-class selectors. (deprecated)
+  # 指定允许的伪类选择器的白名单。
+  # 使用 selector-pseudo-class-allowed-list
+  # selector-pseudo-class-whitelist: null
+
+  # Specify a list of allowed pseudo-element selectors.
+  selector-pseudo-element-allowed-list: null
+
+  # Specify a list of disallowed pseudo-element selectors. (deprecated)
+  # 指定禁用的伪元素选择器的黑名单。
+  # 使用 selector-pseudo-element-disallowed-list
+  # selector-pseudo-element-blacklist: null
+
+  # Specify single or double colon notation for applicable pseudo-elements (Autofixable).
+  # 指定伪元素适用单冒号还是双冒号表示法（可自动修复）。
+  selector-pseudo-element-colon-notation: double
+
+  # Specify a list of disallowed pseudo-element selectors.
+  selector-pseudo-element-disallowed-list: null
+
+  # Specify a list of allowed pseudo-element selectors. (deprecated)
+  # 指定允许的伪元素选择器的白名单。
+  # 使用 selector-pseudo-element-allowed-list
+  # selector-pseudo-element-whitelist:
+
+  # -----------------------
+  # Media feature
+  # -----------------------
+
+  # Specify a list of allowed media feature names.
+  media-feature-name-allowed-list: null
+
+  # Specify a list of disallowed media feature names. (deprecated)
+  # 指定禁用的媒体功能名的黑名单。
+  # 使用 media-feature-name-disallowed-list
+  # media-feature-name-blacklist: null
+
+  # Specify a list of disallowed media feature names.
+  media-feature-name-disallowed-list: null
+
+  # Disallow vendor prefixes for media feature names (Autofixable).
+  # 禁止媒体功能名的浏览器引擎前缀。
+  # TODO
+  media-feature-name-no-vendor-prefix: null
+
+  # Specify a list of allowed media feature name and value pairs.
+  media-feature-name-value-allowed-list: null
+
+  # Specify a list of allowed media feature name and value pairs. (deprecated)
+  # 指定允许的媒体功能名和值对的白名单。
+  # 使用 media-feature-name-value-allowed-list
+  # media-feature-name-value-whitelist: null
+
+  # Specify a list of allowed media feature names. (deprecated)
+  # 指定允许的媒体功能名的白名单。
+  # 使用 media-feature-name-allowed-list
+  # media-feature-name-whitelist: null
+
+  # -----------------------
+  # Custom media
+  # -----------------------
+
+  # Specify a pattern for custom media query names.
+  # 指定自定义媒体查询名的模式。
+  custom-media-pattern: null
+
+  # -----------------------
+  # At-rule
+  # -----------------------
+
+  # Specify a list of allowed at-rules.
+  at-rule-allowed-list: null
+
+  # Specify a list of disallowed at-rules. (deprecated)
+  # 指定禁用的@规则的黑名单。
+  # 使用 at-rule-disallowed-list
+  # at-rule-blacklist:
+
+  # Specify a list of disallowed at-rules.
+  at-rule-disallowed-list: null
+
+  # Disallow vendor prefixes for at-rules (Autofixable).
+  # 禁止@规则的浏览器引擎前缀。
+  at-rule-no-vendor-prefix: true
+
+  # Specify a list of required properties for an at-rule.
+  # TODO: SSS
+  at-rule-property-required-list: null
+
+  # Specify a list of required properties for an at-rule. (deprecated)
+  # 使用 at-rule-property-required-list
+  # at-rule-property-requirelist: null
+
+  # Specify a list of allowed at-rules. (deprecated)
+  # 指定允许的@规则的白名单。
+  # 使用 at-rule-allowed-list
+  # at-rule-whitelist: null
+
+  # -----------------------
+  # Comment
+  # -----------------------
+
+  # Specify a pattern for comments.
+  comment-pattern: null
+
+  # Specify a list of disallowed words within comments. (deprecated)
+  # 指定在注释中禁用的单词的黑名单。
+  # 使用 comment-word-disallowed-list
+  # comment-word-blacklist: null
+
+  # Specify a list of disallowed words within comments.
+  comment-word-disallowed-list: null
+
+  # -----------------------
+  # General / Sheet
+  # -----------------------
+
+  # Limit the depth of nesting.
+  # 限制允许的嵌套深度。
+  max-nesting-depth:
+    - 3
+    -
+      ignore:
+        # 忽略仅包含其他规则并且本身不具有声明块的@规则。
+        - blockless-at-rules
+        # 忽略每个选择器列表项中的第一个选择器是伪类的规则
+        - pseudo-classes
+      ignoreAtRules:
+        - media
+
+  # Disallow unknown animations.
+  # 禁止未知的动画。
+  no-unknown-animations: true
+
+  # =======================
+  # Stylistic issues
+  # =======================
+
+  # -----------------------
+  # Color
+  # -----------------------
+
+  # Specify lowercase or uppercase for hex colors (Autofixable).
+  # 指定 16 进制颜色的大小写（可自动修复）。
+  color-hex-case: lower
+
+  # Specify short or long notation for hex colors (Autofixable).
+  # 指定 16 进制颜色的简写或扩写（可自动修复）。
+  color-hex-length:
+    - short
+    -
+      severity: warning
+
+  # -----------------------
+  # Font family
+  # -----------------------
+
+  # Specify whether or not quotation marks should be used around font family names.
+  # 指定是否应在字体族名称周围使用引号。
+  font-family-name-quotes: always-where-required
+
+  # -----------------------
+  # Function
+  # -----------------------
+
+  # Require a newline or disallow whitespace after the commas of functions (Autofixable).
+  # 要求在函数的逗号之后必须有换行符或不能有空白符（可自动修复）。
+  function-comma-newline-after: always-multi-line
+
+  # Require a newline or disallow whitespace before the commas of functions (Autofixable).
+  # 要求在函数的逗号之前必须有换行符或不能有空白符（可自动修复）。
+  function-comma-newline-before: always-single-line
+
+  # Require a single space or disallow whitespace after the commas of functions (Autofixable).
+  # 要求在函数的逗号之后必须有一个空格或不能有空白符（可自动修复）。
+  function-comma-space-after: always-single-line
+
+  # Require a single space or disallow whitespace before the commas of functions (Autofixable).
+  # 要求在函数的逗号之前必须有一个空格或不能有空白符（可自动修复）。
+  function-comma-space-before: never
+
+  # Limit the number of adjacent empty lines within functions (Autofixable).
+  # 限制函数中相邻空行的数量（可自动修复）
+  function-max-empty-lines: 0
+
+  # Specify lowercase or uppercase for function names (Autofixable).
+  # 指定函数名的大小写（可自动修复）。
+  function-name-case:
+    - lower
+    -
+      ignoreFunctions: []
+
+  # Require a newline or disallow whitespace on the inside of the parentheses of functions (Autofixable).
+  # 要求在函数的括号内侧必须有换行符或不能有空白符（可自动修复）。
+  function-parentheses-newline-inside: always-multi-line
+
+  # Require a single space or disallow whitespace on the inside of the parentheses of functions (Autofixable).
+  # 要求在函数的括号内侧必须有一个空格或不能有空白符（可自动修复）。
+  function-parentheses-space-inside: never-single-line
+
+  # Require or disallow quotes for urls.
+  # 要求或禁止 URL 的引号。
+  # TODO
+  function-url-quotes: null
+
+  # Require or disallow whitespace after functions (Autofixable).
+  # 要求或禁止函数之后的空白符（可自动修复）。
+  function-whitespace-after: always
+
+  # -----------------------
+  # Number
+  # -----------------------
+
+  # Require or disallow a leading zero for fractional numbers less than 1 (Autofixable).
+  # 要求或禁止小于 1 的小数有一个前导零（可自动修复）。
+  number-leading-zero: always
+
+  # Disallow trailing zeros in numbers (Autofixable).
+  # 禁止数量的尾随零（可自动修复）。
+  number-no-trailing-zeros: true
+
+  # -----------------------
+  # String
+  # -----------------------
+
+  # Specify single or double quotes around strings (Autofixable).
+  # 指定字符串使用单引号或双引号（可自动修复）。
+  string-quotes:
+    - double
+    -
+      avoidEscape: false
+
+  # -----------------------
+  # Unit
+  # -----------------------
+
+  # Specify lowercase or uppercase for units (Autofixable).
+  # 指定单位的大小写（可自动修复）。
+  # 这里关闭，正常情况下建议使用小写。
+  # 关闭是因为 rem 插件的自动无差别进行计算
+  unit-case: null
+
+  # -----------------------
+  # Value
+  # -----------------------
+
+  # Specify lowercase or uppercase for keywords values (Autofixable).
+  # 指定关键字值的大小写（可自动修复）。
+  value-keyword-case: lower
+
+  # -----------------------
+  # Value list
+  # -----------------------
+
+  # Require a newline or disallow whitespace after the commas of value lists (Autofixable).
+  # 要求在值列表的逗号之后必须有换行符或不能有空白符（可自动修复）。
+  value-list-comma-newline-after: always-multi-line
+
+  # Require a newline or disallow whitespace before the commas of value lists.
+  # 要求在值列表的逗号之前必须有换行符或不能有空白符。
+  value-list-comma-newline-before: never-multi-line
+
+  # Require a single space or disallow whitespace after the commas of value lists (Autofixable).
+  # 要求在值列表的逗号之后必须有一个空格或不能有空白符（可自动修复）。
+  value-list-comma-space-after: always-single-line
+
+  # Require a single space or disallow whitespace before the commas of value lists (Autofixable).
+  # 要求在值列表的逗号之前必须有一个空格或不能有空白符（可自动修复）。
+  value-list-comma-space-before: never
+
+  # Limit the number of adjacent empty lines within value lists (Autofixable).
+  # 限制值列表中相邻空行的数量（可自动修复）
+  value-list-max-empty-lines: 0
+
+  # -----------------------
+  # Custom property
+  # -----------------------
+
+  # Require or disallow an empty line before custom properties (Autofixable).
+  # 要求或禁止在自定义属性之前的空行（可自动修复）。
+  custom-property-empty-line-before:
+    - always
+    -
+      except:
+        - after-custom-property
+        - first-nested
+      ignore:
+        - after-comment
+        # - first-nested
+        - inside-single-line-block
+
+  # -----------------------
+  # Property
+  # -----------------------
+
+  # Specify lowercase or uppercase for properties (Autofixable).
+  # 指定属性的大小写（可自动修复）。
+  property-case: lower
+
+  # -----------------------
+  # Declaration
+  # -----------------------
+
+  # Require a single space or disallow whitespace after the bang of declarations (Autofixable).
+  # 要求在声明的叹号之后必须有一个空格或不能有空白符（可自动修复）。
+  declaration-bang-space-after: never
+
+  # Require a single space or disallow whitespace before the bang of declarations (Autofixable).
+  # 要求在声明的叹号之前必须有一个空格或不能有空白符（可自动修复）。
+  declaration-bang-space-before: always
+
+  # Require a newline or disallow whitespace after the colon of declarations (Autofixable).
+  # 要求在声明块的冒号之后必须有换行符或不能有空白符（可自动修复）。
+  declaration-colon-newline-after: always-multi-line
+
+  # Require a single space or disallow whitespace after the colon of declarations (Autofixable).
+  # 要求在声明块的冒号之后必须有一个空格或不能有空白符（可自动修复）。
+  declaration-colon-space-after: always-single-line
+
+  # Require a single space or disallow whitespace before the colon of declarations (Autofixable).
+  # 要求在声明块的冒号之前必须有一个空格或不能有空白符（可自动修复）。
+  declaration-colon-space-before: never
+
+  # Require or disallow an empty line before declarations (Autofixable).
+  # 要求或禁止在声明之前的空行（可自动修复）。
+  # 参考 custom-property-empty-line-before
+  declaration-empty-line-before:
+    - always
+    -
+      except:
+        - after-declaration
+        - first-nested
+      ignore:
+        - after-comment
+        - inside-single-line-block
+
+  # -----------------------
+  # Declaration block
+  # -----------------------
+
+  # Require a newline or disallow whitespace after the semicolons of declaration blocks (Autofixable).
+  # 要求在声明块的分号之后必须有换行符或不能有空白符（可自动修复）。
+  declaration-block-semicolon-newline-after: always-multi-lin
+
+  # Require a newline or disallow whitespace before the semicolons of declaration blocks.
+  # 要求在声明块的分号之前必须有换行符或不能有空白符。
+  declaration-block-semicolon-newline-before: never-multi-line
+
+  # Require a single space or disallow whitespace after the semicolons of declaration blocks (Autofixable).
+  # 要求在声明块的分号之后必须有一个空格或不能有空白符（可自动修复）。
+  declaration-block-semicolon-space-after: always-single-line
+
+  # Require a single space or disallow whitespace before the semicolons of declaration blocks (Autofixable).
+  # 要求在声明块的分号之前必须有一个空格或不能有空白符（可自动修复）。
+  declaration-block-semicolon-space-before: never
+
+  # Require or disallow a trailing semicolon within declaration blocks (Autofixable).
+  # 要求或禁止声明块的一个尾随分号（可自动修复）。
+  declaration-block-trailing-semicolon: always
+
+  # -----------------------
+  # Block
+  # -----------------------
+
+  # Require or disallow an empty line before the closing brace of blocks (Autofixable).
+  # 要求或禁止在块的闭大括号之前空行（可自动修复）。
+  block-closing-brace-empty-line-before: never
+
+  # Require a newline or disallow whitespace after the closing brace of blocks (Autofixable).
+  # 要求在块的闭大括号之后必须有换行符或不能有空白符（可自动修复）。
+  block-closing-brace-newline-after: always
+
+  # Require a newline or disallow whitespace before the closing brace of blocks (Autofixable).
+  # 要求在块的闭大括号之前必须有换行符或不能有空白符（可自动修复）。
+  block-closing-brace-newline-before: always-multi-line
+
+  # Require a single space or disallow whitespace after the closing brace of blocks.
+  # 要求在块的闭大括号之后必须有一个空格或不能有空白符。
+  block-closing-brace-space-after: never
+
+  # Require a single space or disallow whitespace before the closing brace of blocks (Autofixable).
+  # 要求在块的闭大括号之前必须有一个空格或不能有空白符（可自动修复）。
+  block-closing-brace-space-before: always-single-line
+
+  # Require a newline after the opening brace of blocks (Autofixable).
+  # 要求在块的开大括号之后必须有换行符（可自动修复）。
+  block-opening-brace-newline-after: always-multi-line
+
+  # Require a newline or disallow whitespace before the opening brace of blocks (Autofixable).
+  # 要求在块的开大括号之前必须有换行符或不能有空白符（可自动修复）。
+  block-opening-brace-newline-before: never-single-line
+
+  # Require a single space or disallow whitespace after the opening brace of blocks (Autofixable).
+  # 要求在块的开大括号之后必须有一个空格或不能有空白符（可自动修复）。
+  block-opening-brace-space-after: always-single-line
+
+  # Require a single space or disallow whitespace before the opening brace of blocks (Autofixable).
+  # 要求在块的开大括号之前必须有一个空格或不能有空白符（可自动修复）。
+  block-opening-brace-space-before: always
+
+  # -----------------------
+  # Selector
+  # -----------------------
+
+  # Require a single space or disallow whitespace on the inside of the brackets within attribute selectors (Autofixable).
+  # 要求在属性选择器的中括号内侧必须有一个空格或不能有空白符（可自动修复）。
+  selector-attribute-brackets-space-inside: never
+
+  # Require a single space or disallow whitespace after operators within attribute selectors (Autofixable).
+  # 要求在属性选择器中的运算符之后必须有一个空格或不能有空白符（可自动修复）。
+  selector-attribute-operator-space-after: never
+
+  # Require a single space or disallow whitespace before operators within attribute selectors (Autofixable).
+  # 要求在属性选择器中的运算符之前必须有一个空格或不能有空白符（可自动修复）。
+  selector-attribute-operator-space-before: never
+
+  # Require or disallow quotes for attribute values.
+  # 要求或禁止属性值的引号。
+  # TODO
+  # 关闭此项，允许 [href^=s] 类型的选择器
+  selector-attribute-quotes: null
+
+  # Require a single space or disallow whitespace after the combinators of selectors (Autofixable).
+  # 要求在组合选择器之后必须有一个空格或不能有空白符（可自动修复）。
+  selector-combinator-space-after: always
+
+  # Require a single space or disallow whitespace before the combinators of selectors (Autofixable).
+  # 要求在组合选择器之前必须有一个空格或不能有空白符（可自动修复）。
+  selector-combinator-space-before: always
+
+  # Disallow non-space characters for descendant combinators of selectors (Autofixable).
+  # 禁止后代选择器使用非空格字符（可自动修复）。
+  selector-descendant-combinator-no-non-space: true
+
+  # Specify lowercase or uppercase for pseudo-class selectors (Autofixable).
+  # 指定伪类选择器的大小写（可自动修复）。
+  selector-pseudo-class-case: lower
+
+  # Require a single space or disallow whitespace on the inside of the parentheses within pseudo-class selectors (Autofixable).
+  # 要求在伪类选择器的括号内侧必须有一个空格或不能有空白符（可自动修复）。
+  selector-pseudo-class-parentheses-space-inside: never
+
+  # Specify lowercase or uppercase for pseudo-element selectors (Autofixable).
+  # 指定伪元素选择器的大小写。
+  selector-pseudo-element-case: lower
+
+  # Specify lowercase or uppercase for type selectors (Autofixable).
+  # 指定类型选择器的大小写（可自动修复）。
+  selector-type-case: lower
+
+  # -----------------------
+  # Selector list
+  # -----------------------
+
+  # Require a newline or disallow whitespace after the commas of selector lists (Autofixable).
+  # 要求在选择器列表的逗号之后必须有换行符或不能有空白符（可自动修复）。
+  selector-list-comma-newline-after: always
+
+  # Require a newline or disallow whitespace before the commas of selector lists (Autofixable).
+  # 要求在选择器列表的逗号之前必须有换行符或不能有空白符（可自动修复）。
+  selector-list-comma-newline-before: never-multi-line
+
+  # Require a single space or disallow whitespace after the commas of selector lists (Autofixable).
+  # 要求在选择器列表的逗号之后必须有一个空格或不能有空白符（可自动修复）。
+  selector-list-comma-space-after: always-single-line
+
+  # Require a single space or disallow whitespace before the commas of selector lists (Autofixable).
+  # 要求在选择器列表的逗号之前必须有一个空格或不能有空白符（可自动修复）。
+  selector-list-comma-space-before: never
+
+  # -----------------------
+  # Rule
+  # -----------------------
+
+  # Require or disallow an empty line before rules (Autofixable).
+  # 要求或禁止在规则之前的空行（可自动修复）。
+  rule-empty-line-before:
+    - always-multi-line
+    -
+      except:
+        - first-nested
+      ignore:
+        - after-comment
+
+  # -----------------------
+  # Media feature
+  # -----------------------
+
+  # Require a single space or disallow whitespace after the colon in media features (Autofixable).
+  # 要求在媒体功能的冒号之后必须有一个空格或不能有空白符（可自动修复）。
+  media-feature-colon-space-after: always
+
+  # Require a single space or disallow whitespace before the colon in media features (Autofixable).
+  # 要求在媒体功能的冒号之前必须有一个空格或不能有空白符（可自动修复）。
+  media-feature-colon-space-before: never
+
+  # Specify lowercase or uppercase for media feature names (Autofixable).
+  # 指定媒体功能名的大小写（可自动修复）。
+  media-feature-name-case: lower
+
+  # Require a single space or disallow whitespace on the inside of the parentheses within media features (Autofixable).
+  # 要求在媒体功能的括号内侧必须有一个空格或不能有空白符（可自动修复）。
+  media-feature-parentheses-space-inside: never
+
+  # Require a single space or disallow whitespace after the range operator in media features (Autofixable).
+  # 要求在媒体功能的范围运算符之后必须有一个空格或不能有空白符（可自动修复）。
+  media-feature-range-operator-space-after: always
+
+  # Require a single space or disallow whitespace before the range operator in media features (Autofixable).
+  # 要求在媒体功能的范围运算符之前必须有一个空格或不能有空白符（可自动修复）。
+  media-feature-range-operator-space-before: always
+
+  # -----------------------
+  # Media query list
+  # -----------------------
+
+  # Require a newline or disallow whitespace after the commas of media query lists (Autofixable).
+  # 要求在媒体查询列表的逗号之后必须有换行符或不能有空白符（可自动修复）。
+  media-query-list-comma-newline-after: always-multi-line
+
+  # Require a newline or disallow whitespace before the commas of media query lists.
+  # 要求在媒体查询列表的逗号之前必须有换行符或不能有空白符。
+  media-query-list-comma-newline-before: never-multi-line
+
+  # Require a single space or disallow whitespace after the commas of media query lists (Autofixable).
+  # 要求在媒体查询列表的逗号之后必须有一个空格或不能有空白符（可自动修复）。
+  media-query-list-comma-space-after: always-single-line
+
+  # Require a single space or disallow whitespace before the commas of media query lists (Autofixable).
+  # 要求在媒体查询列表的逗号之前必须有一个空格或不能有空白符（可自动修复）。
+  media-query-list-comma-space-before: never
+
+  # -----------------------
+  # At-rule
+  # -----------------------
+
+  # Require or disallow an empty line before at-rules (Autofixable).
+  # 要求或禁止在@规则之前的空行（可自动修复）。
+  at-rule-empty-line-before:
+    - always
+    -
+      except:
+        # - after-same-name
+        # - inside-block
+        - blockless-after-same-name-blockless
+        # - blockless-after-blockless
+        - first-nested
+      ignore:
+        - after-comment
+        # - first-nested
+        # - inside-block
+        # - blockless-after-same-name-blockless
+        # - blockless-after-blockless
+      ignoreAtRules:
+        - import
+
+  # Specify lowercase or uppercase for at-rules names (Autofixable).
+  # 指定@规则名的大小写（可自动修复）。
+  at-rule-name-case: lower
+
+  # Require a newline after at-rule names.
+  # 要求在@规则名之后必须有换行符。
+  at-rule-name-newline-after: always-multi-line
+
+  # Require a single space after at-rule names (Autofixable).
+  # 要求在@规则名之后必须有一个空格（可自动修复）。
+  at-rule-name-space-after: always-single-line
+
+  # Require a newline after the semicolon of at-rules (Autofixable).
+  # 要求在@规则的分号之后必须有换行符（可自动修复）。
+  at-rule-semicolon-newline-after: always
+
+  # Require a single space or disallow whitespace before the semicolons of at-rules.
+  # 要求在@规则的分号之前必须有一个空格或不能有空白符。
+  at-rule-semicolon-space-before: never
+
+  # -----------------------
+  # Comment
+  # -----------------------
+
+  # Require or disallow an empty line before comments (Autofixable).
+  # 要求或禁止在注释之前的空行（可自动修复）。
+  comment-empty-line-before:
+    - always
+    -
+      except:
+        - first-nested
+      ignore:
+        - after-comment
+        - stylelint-commands
+
+  # Require or disallow whitespace on the inside of comment markers (Autofixable).
+  # 要求或禁止注释标记内侧的空白符（可自动修复）。
+  comment-whitespace-inside: always
+
+  # -----------------------
+  # General / Sheet
+  # -----------------------
+
+  # Specify indentation (Autofixable).
+  # 指定缩进（可自动修复）。
+  indentation:
+    - 2
+    -
+      baseIndentLevel: 1
+      indentInsideParens: once-at-root-twice-in-block
+
+  # Specify unix or windows linebreaks (Autofixable).
+  # 指定 unix 或 windows 换行符（可自动修复）。
+  # 编辑器决定
+  linebreaks: null
+
+  # Limit the number of adjacent empty lines (Autofixable).
+  # 限制相邻空行的数量。
+  max-empty-lines: 1
+
+  # Limit the length of a line.
+  # 限制行的长度。
+  max-line-length: null
+
+  # Disallow end-of-line whitespace (Autofixable).
+  # 禁止行尾空白符（可自动修复）。
+  no-eol-whitespace: true
+
+  # Disallow missing end-of-source newlines (Autofixable).
+  # 禁止缺少源码结尾换行符（可自动修复）。
+  no-missing-end-of-source-newline: true
+
+  # Disallow empty first lines (Autofixable).
+  # 禁止空第一行（可自动修复）。
+  # 空文件请使用 no-empty-source
+  no-empty-first-line: true
+
+  # Require or disallow Unicode BOM.
+  # 禁止 Unicode BOM
+  # 编辑器决定
+  unicode-bom: null

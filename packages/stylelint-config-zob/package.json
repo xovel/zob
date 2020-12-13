@@ -1,0 +1,26 @@
+{
+  "name": "stylelint-config-zob",
+  "version": "0.0.1",
+  "description": "Stylelint config for `zob` systems",
+  "author": "xovel <xovel@vip.qq.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xovel/zob.git"
+  },
+  "peerDependencies": {
+    "stylelint": "^13.8.0",
+    "stylelint-order": "^4.1.0"
+  },
+  "keywords": [
+    "zob",
+    "css",
+    "style",
+    "stylelint",
+    "lint"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xovel/zob/issues"
+  },
+  "homepage": "https://github.com/xovel/zob#readme"
+}
