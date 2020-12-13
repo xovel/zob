@@ -4,7 +4,8 @@
   "description": "A style guide for coding and writing.",
   "author": "xovel <xovel@vip.qq.com>",
   "scripts": {
-    "build": "node ./build/eslint-config-zob"
+    "build:eslint-config": "node ./build/eslint-config-zob",
+    "build:stylelint-config": "node ./build/stylelint-config-zob"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,6 @@
   },
   "homepage": "https://github.com/xovel/zob#readme",
   "devDependencies": {
-    "js-yaml": "^3.13.1"
+    "js-yaml": "^3.14.1"
   }
 }
