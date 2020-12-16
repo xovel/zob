@@ -71,7 +71,7 @@ rules:
   # 禁止字面量对象出现重名 key
   no-dupe-keys: 2
 
-  # 禁止 switch 的 case 语句中出现的表达式
+  # 禁止 switch 的 case 重复
   no-duplicate-case: 2
 
   # 禁止出现空语句
@@ -407,6 +407,7 @@ rules:
   init-declarations: 0
 
   # 禁止 catch 语句中的覆盖变量
+  # 该规则已废弃，使用 no-shadow 替代
   no-catch-shadow: 0
 
   # 禁止删除变量
@@ -440,7 +441,11 @@ rules:
   # 禁止未使用的变量
   no-unused-vars:
     - 2
-    - args: none
+    - 
+      vars: all
+      args: none
+      ignoreRestSiblings: true
+      caughtErrors: none
 
   # 禁止定义前使用
   no-use-before-define: [1, {functions: false, variables: true, classes: true}]
@@ -489,18 +494,25 @@ rules:
   # `https://eslint.org/docs/rules/#stylistic-issues`
 
   # 数组中的括号和换行
-  array-bracket-newline: 0
+  # consistent 对每个括号要求使用一致的换行符
+  # multiline 如果数组元素内或元素间有换行，则要求换行
+  array-bracket-newline: [2, {
+    multiline: true
+  }]
 
   # 数组中使用风格统一的空格
   array-bracket-spacing: [2, never]
 
   # 数组元素的换行
-  array-element-newline: 0
+  array-element-newline: [2, {
+    multiline: true
+  }]
 
   # 代码块内花括号的空格
   block-spacing: 2
 
   # 花括号风格
+  # 1tbs: one true brace style
   brace-style: [2, 1tbs, {allowSingleLine: true}]
 
   # 使用驼峰拼写
@@ -544,7 +556,8 @@ rules:
   func-style: 0
 
   # 函数参数的位置
-  function-paren-newline: 0
+  # consistent 要求每个括号使用一致的换行
+  function-paren-newline: [2, consistent]
 
   # 禁止指定的标识符
   id-blacklist: 0
@@ -576,7 +589,7 @@ rules:
   # 关键字前后的空格
   keyword-spacing: 2
 
-  # 行内注释的位置
+  # 行注释的位置
   line-comment-position: 0
 
   # 换行符风格
