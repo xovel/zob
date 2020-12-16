@@ -186,7 +186,10 @@ module.exports = {
     'no-unused-vars': [
       2,
       {
-        args: 'none'
+        vars: 'all',
+        args: 'none',
+        ignoreRestSiblings: true,
+        caughtErrors: 'none'
       }
     ],
     'no-use-before-define': [
@@ -208,12 +211,22 @@ module.exports = {
     'no-process-exit': 0,
     'no-restricted-modules': 0,
     'no-sync': 0,
-    'array-bracket-newline': 0,
+    'array-bracket-newline': [
+      2,
+      {
+        multiline: true
+      }
+    ],
     'array-bracket-spacing': [
       2,
       'never'
     ],
-    'array-element-newline': 0,
+    'array-element-newline': [
+      2,
+      {
+        multiline: true
+      }
+    ],
     'block-spacing': 2,
     'brace-style': [
       2,
@@ -234,7 +247,10 @@ module.exports = {
     'func-name-matching': 0,
     'func-names': 0,
     'func-style': 0,
-    'function-paren-newline': 0,
+    'function-paren-newline': [
+      2,
+      'consistent'
+    ],
     'id-blacklist': 0,
     'id-length': 0,
     'id-match': 0,
