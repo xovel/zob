@@ -1,7 +1,7 @@
 {
   "name": "stylelint-config-zob",
   "version": "0.0.1",
-  "description": "Stylelint config for `zob` systems",
+  "description": "Stylelint config for zob system.",
   "author": "xovel <xovel@vip.qq.com>",
   "repository": {
     "type": "git",

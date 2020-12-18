@@ -1,6 +1,6 @@
 # stylelint-config-zob
 
-Stylelint config for `zob` systems.
+Stylelint config for zob system.
 
 ## History
 

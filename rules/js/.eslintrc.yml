@@ -1,783 +1,1062 @@
 root: true
 
-# 对应环境下的全局变量
 env:
   node: true
-  es6: true
   browser: true
+  es6: true
   jquery: true
+  amd: true
+  mocha: true
 
-# 解析选项
 parserOptions:
-  # ECMAScript 版本
-  ecmaVersion: 2019
-  # 源码类型
-  # - script 常规脚本
-  # - module 模块化
+  parser: babel-eslint
+  ecmaVersion: 2021
   sourceType: module
 
-# 指定全局变量
-# globals:
-
-# 采用官方推荐规则
-# extends: 'eslint:recommended'
-
-# 本规则的定制顺序按照 eslint 官方网站的顺序进行，详情可参阅：`https://eslint.org/docs/rules/`
-
-# 制定时间：2019 年 4 月 18 日
-
-# 定制
 rules:
 
-  # ===============
+  # =======================
   # Possible Errors
-  # `https://eslint.org/docs/rules/#possible-errors`
+  # =======================
 
-  # for 循环的方向
+  # These rules relate to possible syntax or logic errors in JavaScript code
+
+  # enforce "for" loop update clause moving the counter in the right direction.
+  # 强制 “for” 循环中更新子句的计数器朝着正确的方向移动
   for-direction: 2
 
-  # getter 必须给定返回值
+  # enforce `return` statements in getters
+  # 强制 getter 函数中出现 return 语句
   getter-return: 2
 
-  # Promise 的参数不使用 async 语法
-  no-async-promise-executor: 0
+  # disallow using an async function as a Promise executor
+  # 禁止使用异步函数作为 Promise executor
+  no-async-promise-executor: 2
 
-  # 在循环中不使用 await
-  no-await-in-loop: 0
+  # disallow `await` inside of loops
+  # 禁止在循环中出现 await
+  no-await-in-loop: 1
 
-  # 不跟 -0 进行比较
+  # disallow comparing against -0
+  # 禁止与 -0 进行比较
   no-compare-neg-zero: 2
 
-  # 不在条件语句里面进行赋值运算
-  # if、for、while 和 do...while
+  # disallow assignment operators in conditional expressions
+  # 禁止条件表达式中出现赋值操作符
   no-cond-assign: 2
 
+  # disallow the use of `console`
   # 禁用 console
-  no-console: 1
+  no-console: 0
 
+  # disallow constant expressions in conditions
   # 禁止在条件中使用常量表达式
-  no-constant-condition: [2, {checkLoops: true}]
+  no-constant-condition:
+    - 2
+    -
+      checkLoops: false
 
+  # disallow control characters in regular expressions
   # 禁止在正则表达式中使用控制字符
-  # 在 ASCII 中，0-31 范围内的控制字符是特殊的、不可见的字符
   no-control-regex: 2
 
+  # disallow the use of `debugger`
   # 禁用 debugger
   no-debugger: 2
 
-  # 禁止函数出现重名参数
+  # disallow duplicate arguments in `function` definitions
+  # 禁止 function 定义中出现重名参数
   no-dupe-args: 2
 
-  # 禁止字面量对象出现重名 key
+  # disallow duplicate conditions in if-else-if chains
+  no-dupe-else-if: 2
+
+  # disallow duplicate keys in object literals
+  # 禁止对象字面量中出现重复的 key
   no-dupe-keys: 2
 
-  # 禁止 switch 的 case 重复
+  # disallow duplicate case labels
+  # 禁止出现重复的 case 标签
   no-duplicate-case: 2
 
-  # 禁止出现空语句
-  # 允许 catch 子句为空
-  no-empty: [2, {allowEmptyCatch: true}]
+  # disallow empty block statements
+  # 禁止出现空语句块
+  no-empty:
+    - 2
+    -
+      # 允许 catch 子句为空
+      allowEmptyCatch: true
 
-  # 禁止正则表达式中出现空字符集
+  # disallow empty character classes in regular expressions
+  # 禁止在正则表达式中使用空字符集
   no-empty-character-class: 2
 
-  # 禁止对 catch 子句中的异常重新赋值
+  # disallow reassigning exceptions in `catch` clauses
+  # 禁止对 catch 子句的参数重新赋值
   no-ex-assign: 2
 
-  # 禁止不必要的条件转换
-  no-extra-boolean-cast: 1
+  # disallow unnecessary boolean casts
+  # 禁止不必要的布尔转换
+  no-extra-boolean-cast: 2
 
+  # disallow unnecessary parentheses
   # 禁止不必要的括号
-  # 这里不禁用
-  no-extra-parens: 0
+  no-extra-parens:
+    - 2
+    - all
+    -
+      conditionalAssign: false
+      returnAssign: false
+      nestedBinaryExpressions: false
+      ignoreJSX: all
+      enforceForArrowConditionals: false
+      enforceForSequenceExpressions: false
+      enforceForNewInMemberExpressions: false
+      enforceForFunctionPrototypeMethods: false
 
+  # disallow unnecessary semicolons
   # 禁止不必要的分号
-  no-extra-semi: 1
+  no-extra-semi: 2
 
-  # 禁止函数重复声明赋值
+  # disallow reassigning `function` declarations
+  # 禁止对 function 声明重新赋值
   no-func-assign: 2
 
-  # 禁止在嵌套的语句块中出现变量或函数声明
-  # no-inner-declarations: 0
-  no-inner-declarations: [2, functions]
+  # disallow assigning to imported bindings
+  no-import-assign: 2
 
-  # 禁止无效的正则表达式
+  # disallow variable or `function` declarations in nested blocks
+  # 禁止在嵌套的块中出现变量声明或 function 声明
+  no-inner-declarations:
+    - 2
+    - functions
+
+  # disallow invalid regular expression strings in `RegExp` constructors
+  # 禁止 RegExp 构造函数中存在无效的正则表达式字符串
   no-invalid-regexp: 2
 
-  # 禁止不规则的留白
-  no-irregular-whitespace: [2, {skipStrings: true, skipComments: true, skipRegExps: true, skipTemplates: true}]
+  # disallow irregular whitespace
+  # 禁止不规则的空白
+  no-irregular-whitespace:
+    - 2
+    -
+      skipStrings: true
+      skipComments: true
+      skipRegExps: true
+      skipTemplates: true
 
-  # 正则表达式中禁止使用令人疑惑的字符集
-  no-misleading-character-class: 0
+  # disallow literal numbers that lose precision
+  no-loss-of-precision: 2
 
-  # 禁止将全局对象当作函数进行调用
-  # 该规则禁止将 Math、JSON 和 Reflect 对象当作函数进行调用
+  # disallow characters which are made with multiple code points in character class syntax
+  # 不允许在字符类语法中出现由多个代码点组成的字符
+  no-misleading-character-class: 2
+
+  # disallow calling global object properties as functions
+  # 禁止把全局对象作为函数调用
   no-obj-calls: 2
 
-  # 禁止直接使用 Object.prototypes 的内置属性
+  # disallow returning values from Promise executor functions
+  no-promise-executor-return: 2
+
+  # disallow calling some `Object.prototype` methods directly on objects
+  # 禁止直接调用 Object.prototypes 的内置属性
   no-prototype-builtins: 2
 
-  # 禁止正则表达式中出现多个空格
+  # disallow multiple spaces in regular expressions
+  # 禁止正则表达式字面量中出现多个空格
   no-regex-spaces: 2
 
-  # 禁止稀疏数组
+  # disallow returning values from setters
+  no-setter-return: 2
+
+  # disallow sparse arrays
+  # 禁用稀疏数组
   no-sparse-arrays: 2
 
-  # 禁止在常规字符串中使用模板字符串
-  no-template-curly-in-string: 0
+  # disallow template literal placeholder syntax in regular strings
+  # 禁止在常规字符串中出现模板字面量占位符语法
+  no-template-curly-in-string: 2
 
-  # 禁止出现令人迷惑的多行表达式
+  # disallow confusing multiline expressions
+  # 禁止出现令人困惑的多行表达式
   no-unexpected-multiline: 2
 
-  # 禁止出现不可达表达式
-  # 禁止在 return、throw、continue 和 break 语句后出现不可达代码
+  # disallow unreachable code after `return`, `throw`, `continue`, and `break` statements
+  # 禁止在 return、throw、continue 和 break 语句之后出现不可达代码
   no-unreachable: 2
 
+  # disallow loops with a body that allows only one iteration
+  no-unreachable-loop: 2
+
+  # disallow control flow statements in `finally` blocks
   # 禁止在 finally 语句块中出现控制流语句
   no-unsafe-finally: 2
 
-  # 禁止在关系操作符的左侧进行取非
+  # disallow negating the left operand of relational operators
+  # 禁止对关系运算符的左操作数使用否定操作符
   no-unsafe-negation: 2
 
-  # 使用 isNaN 来检测 NaN
+  # disallow use of optional chaining in contexts where the `undefined` value is not allowed
+  no-unsafe-optional-chaining: 2
+
+  # disallow useless backreferences in regular expressions
+  no-useless-backreference: 2
+
+  # disallow assignments that can lead to race conditions due to usage of `await` or `yield`
+  # 禁止由于 await 或 yield 的使用而可能导致出现竞态条件的赋值
+  require-atomic-updates: 2
+
+  # require calls to `isNaN()` when checking for `NaN`
+  # 要求使用 isNaN() 检查 NaN
   use-isnan: 2
 
-  # yield 和 await 中使用原子操作
-  require-atomic-updates: 1
-
-  # 强制 typeof 与有效的字符串进行比较
+  # enforce comparing `typeof` expressions against valid strings
+  # 强制 typeof 表达式与有效的字符串进行比较
   valid-typeof: 2
 
-  # ==============
+  # =======================
   # Best Practices
-  # `https://eslint.org/docs/rules/#best-practices`
+  # =======================
 
-  # 强制 get 与 set 成对出现
+  # These rules relate to better ways of doing things to help you avoid problems
+
+  # enforce getter and setter pairs in objects and classes
+  # 强制 getter 和 setter 在对象中成对出现
   accessor-pairs: 2
 
-  # 强制数组方法的回调函数中使用 return 语句
+  # enforce `return` statements in callbacks of array methods
+  # 强制数组方法的回调函数中有 return 语句
   array-callback-return: 2
 
-  # 强制 var 变量在块级作用域之内
+  # enforce the use of variables within the scope they are defined
+  # 强制把变量的使用限制在其定义的作用域范围内
   block-scoped-var: 2
 
-  # 强制在类中使用 this
+  # enforce that class methods utilize `this`
+  # 强制类方法使用 this
   class-methods-use-this: 0
 
-  # 限制代码嵌套的复杂程度
-  # 默认值是 20
+  # enforce a maximum cyclomatic complexity allowed in a program
+  # 指定程序中允许的最大环路复杂度
   complexity: 2
-  # complexity: [2, 10]
 
-  # 强制 return 语句一致
+  # require `return` statements to either always or never specify values
+  # 要求 return 语句要么总是指定返回的值，要么不指定
   consistent-return: 0
 
-  # 花括号风格
-  curly: [1, multi-line, consistent]
-  # curly: [2, multi-line]
+  # enforce consistent brace style for all control statements
+  # 强制所有控制语句使用一致的括号风格
+  curly:
+    - 2
+    - multi-line
+    - consistent
 
+  # require `default` cases in `switch` statements
   # 要求 switch 语句中有 default 分支
-  default-case: 0
+  default-case: 2
 
-  # 强制点号之前或之后换行
-  # property 表示点号与属性同行
-  # object 表示点号与对象同行
-  dot-location: [2, property]
+  # enforce default clauses in switch statements to be last
+  default-case-last: 2
 
-  # 强制使用点号
-  # allowPattern 可以指定允许正则匹配
-  # 关闭该项的检测
-  dot-notation: 0
+  # enforce default parameters to be last
+  default-param-last: 2
 
-  # 使用全等进行判断
+  # enforce consistent newlines before and after dots
+  # 强制在点号之前和之后一致的换行
+  dot-location:
+    - 2
+    - property
+
+  # enforce dot notation whenever possible
+  # 强制尽可能地使用点号
+  dot-notation:
+    - 2
+    -
+      allowKeywords: true
+
+  # require the use of `===` and `!==`
+  # 要求使用 === 和 !==
   eqeqeq: 2
 
-  # 要求 for-in 中使用 if 语句
-  guard-for-in: 0
+  # require grouped accessor pairs in object literals and classes
+  grouped-accessor-pairs: 2
 
-  # 禁用 alert、prompt、confirm
+  # require `for-in` loops to include an `if` statement
+  # 要求 for-in 循环中有一个 if 语句
+  guard-for-in: 1
+
+  # enforce a maximum number of classes per file
+  # 强制每个文件中包含的的类的最大数量
+  max-classes-per-file: 0
+
+  # disallow the use of `alert`, `confirm`, and `prompt`
+  # 禁用 alert、confirm 和 prompt
   no-alert: 1
 
-  # 禁用 caller 或 callee
+  # disallow the use of `arguments.caller` or `arguments.callee`
+  # 禁用 arguments.caller 或 arguments.callee
   no-caller: 2
 
-  # 禁止在 case 或 default 子句中使用声明
+  # disallow lexical declarations in case clauses
+  # 不允许在 case 子句中使用词法声明
   no-case-declarations: 2
 
-  # 禁止使用看起来像除法的正则表达式
+  # disallow returning value from constructor
+  no-constructor-return: 2
+
+  # disallow division operators explicitly at the beginning of regular expressions
+  # 禁止除法操作符显式的出现在正则表达式开始的位置
   no-div-regex: 2
 
-  # 禁止在 else 前有 return
+  # disallow `else` blocks after `return` statements in `if` statements
+  # 禁止 if 语句中 return 语句之后有 else 块
   no-else-return: 2
 
-  # 禁止空函数
-  no-empty-function: 1
+  # disallow empty functions
+  # 禁止出现空函数
+  no-empty-function:
+    - 2
+    -
+      allow:
+        - functions
+        - setters
+        - getters
+        - asyncFunctions
 
-  # 禁止空解构
+  # disallow empty destructuring patterns
+  # 禁止使用空解构模式
   no-empty-pattern: 2
 
-  # 禁止与 null 进行比较
-  # 如需要，请使用 `===`
-  no-eq-null: 1
+  # disallow `null` comparisons without type-checking operators
+  # 禁止在没有类型检查操作符的情况下与 null 进行比较
+  no-eq-null: 2
 
-  # 禁用 eval
+  # disallow the use of `eval()`
+  # 禁用 eval()
   no-eval: 1
 
-  # 禁止扩展原生对象
+  # disallow extending native types
+  # 禁止扩展原生类型
   no-extend-native: 0
 
-  # 禁止不必要的 bind
-  no-extra-bind: 1
+  # disallow unnecessary calls to `.bind()`
+  # 禁止不必要的 .bind() 调用
+  no-extra-bind: 2
 
-  # 禁止不必要的标签
+  # disallow unnecessary labels
+  # 禁用不必要的标签
   no-extra-label: 2
 
-  # 禁止 case 语句空落
+  # disallow fallthrough of `case` statements
+  # 禁止 case 语句落空
   no-fallthrough: 0
 
-  # 禁止浮点小数
-  # 即禁止前导 . 和拖尾 . 符号来表示浮点数，如 `.5`、`2.`
+  # disallow leading or trailing decimal points in numeric literals
+  # 禁止数字字面量中使用前导和末尾小数点
   no-floating-decimal: 2
 
-  # 禁止覆盖原生对象
+  # disallow assignments to native objects or read-only global variables
+  # 禁止对原生对象或只读的全局对象进行赋值
   no-global-assign: 2
 
+  # disallow shorthand type conversions
   # 禁止使用短符号进行类型转换
   no-implicit-coercion: 0
 
-  # 禁止全局范围内使用变量或函数声明
+  # disallow declarations in the global scope
+  # 禁止在全局范围内使用变量声明和 function 声明
   no-implicit-globals: 0
 
-  # 禁止使用隐式或者类似 eval 的方法
-  # 如 setTimeout/setInterval 的参数为字符串 `setTimeout("alert('Hi!');", 100);`
+  # disallow the use of `eval()`-like methods
+  # 禁止使用类似 eval() 的方法
   no-implied-eval: 2
 
-  # 禁止 this 出现在类或类对象之外
+  # disallow `this` keywords outside of classes or class-like objects
+  # 禁止 this 关键字出现在类和类对象之外
   no-invalid-this: 0
 
-  # 禁用对象的迭代器 __iterator__ 属性
+  # disallow the use of the `__iterator__` property
+  # 禁用 __iterator__ 属性
   no-iterator: 2
 
-  # 禁用 label 标签语句
+  # disallow labeled statements
+  # 禁用标签语句
   no-labels: 1
 
+  # disallow unnecessary nested blocks
   # 禁用不必要的嵌套块
   no-lone-blocks: 2
 
-  # 禁止循环中存在函数
-  no-loop-func: 0
+  # disallow function declarations that contain unsafe references inside loop statements
+  # 禁止在循环语句中出现包含不安全引用的函数声明
+  no-loop-func: 2
 
+  # disallow magic numbers
   # 禁用魔术数字
-  # 这里的魔术数字指的是令人看不懂的数字
-  no-magic-numbers: 0
+  no-magic-numbers:
+    - 0
+    -
+      ignore: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 24, 60, 100, 200, 300, 1000, 1500, 3000]
+      ignoreArrayIndexes: true
+      ignoreDefaultValues: true
+      enforceConst: true
+      detectObjects: true
 
-  # 禁止多个空格
-  # no-multi-spaces: 0
+  # disallow multiple spaces
+  # 禁止使用多个空格
   no-multi-spaces:
     - 2
     -
       ignoreEOLComments: true
       exceptions:
         Property: true
+        BinaryExpression: true
         VariableDeclarator: true
         ImportDeclaration: true
 
-  # 禁止多行字符串
-  no-multi-str: 1
+  # disallow multiline strings
+  # 禁止使用多行字符串
+  no-multi-str: 2
 
-  # 禁止使用 new 带来的副作用
+  # disallow `new` operators outside of assignments or comparisons
+  # 禁止使用 new 以避免产生副作用
   no-new: 1
 
-  # 禁用 Function 构造函数
+  # disallow `new` operators with the `Function` object
+  # 禁止对 Function 对象使用 new 操作符
   no-new-func: 1
 
-  # 禁止原始包装实例
-  # 即通过 new 操作符使用 String、Number 和 Boolean
+  # disallow `new` operators with the `String`, `Number`, and `Boolean` objects
+  # 禁止对 String，Number 和 Boolean 使用 new 操作符
   no-new-wrappers: 1
 
+  # disallow `\8` and `\9` escape sequences in string literals
+  no-nonoctal-decimal-escape: 2
+
+  # disallow octal literals
   # 禁用八进制字面量
   no-octal: 2
 
-  # 禁止在字符串字面量中进行八进制转义
+  # disallow octal escape sequences in string literals
+  # 禁止在字符串中使用八进制转义序列
   no-octal-escape: 2
 
-  # 禁止对函数的参数重新赋值
+  # disallow reassigning `function` parameters
+  # 禁止对 function 的参数进行重新赋值
   no-param-reassign: 0
 
-  # 禁用 __proto__
-  # 使用 getPrototypeOf 代替
+  # disallow the use of the `__proto__` property
+  # 禁用 __proto__ 属性
   no-proto: 2
 
-  # 禁止重复声明
-  no-redeclare: [2, {builtinGlobals: true}]
+  # disallow variable redeclaration
+  # 禁止多次声明同一变量
+  no-redeclare:
+    - 2
+    -
+      builtinGlobals: true
 
-  # 禁止重写确定对象上的确定属性
+  # disallow certain properties on certain objects
+  # 禁止使用对象的某些属性
   no-restricted-properties: 0
 
-  # 禁止在 return 语句中赋值
-  no-return-assign: 0
+  # disallow assignment operators in `return` statements
+  # 禁止在 return 语句中使用赋值语句
+  no-return-assign: 2
 
-  # 禁止在 return 语句中使用 await
+  # disallow unnecessary `return await`
+  # 禁用不必要的 return await
   no-return-await: 2
 
-  # 禁用 `javascript:` 形式的 url
-  no-script-url: 0
+  # disallow `javascript:` urls
+  # 禁止使用 javascript: url
+  no-script-url: 2
 
-  # 禁止自身赋值
+  # disallow assignments where both sides are exactly the same
+  # 禁止自我赋值
   no-self-assign: 0
 
+  # disallow comparisons where both sides are exactly the same
   # 禁止自身比较
   no-self-compare: 2
 
+  # disallow comma operators
   # 禁用逗号操作符
-  no-sequences: 1
+  no-sequences: 2
 
-  # 限制抛出异常字面量
+  # disallow throwing literals as exceptions
+  # 禁止抛出异常字面量
   no-throw-literal: 2
 
-  # 禁止一成不变的循环条件
+  # disallow unmodified loop conditions
+  # 禁用一成不变的循环条件
   no-unmodified-loop-condition: 2
 
-  # 禁止未使用的表达式
-  no-unused-expressions: [1, {allowShortCircuit: true, allowTernary: true, allowTaggedTemplates: true}]
+  # disallow unused expressions
+  # 禁止出现未使用过的表达式
+  no-unused-expressions:
+    - 2
+    -
+      allowShortCircuit: true
+      allowTernary: true
+      allowTaggedTemplates: true
 
-  # 禁用未使用的标签
+  # disallow unused labels
+  # 禁用出现未使用过的标
   no-unused-labels: 2
 
-  # 禁止不必要的 call 或 apply
+  # disallow unnecessary calls to `.call()` and `.apply()`
+  # 禁止不必要的 .call() 和 .apply()
   no-useless-call: 0
 
-  # 禁止不必要的 catch 语句
-  no-useless-catch: 0
+  # disallow unnecessary `catch` clauses
+  # 禁止不必要的 catch 子句
+  no-useless-catch: 2
 
-  # 禁止不必要的字符串拼接
+  # disallow unnecessary concatenation of literals or template literals
+  # 禁止不必要的字符串字面量或模板字面量的连接
   no-useless-concat: 0
 
-  # 禁止不必要的转义
+  # disallow unnecessary escape characters
+  # 禁用不必要的转义字符
   no-useless-escape: 2
 
-  # 禁止重复的 return 语句
+  # disallow redundant return statements
+  # 禁止多余的 return 语句
   no-useless-return: 2
 
-  # 禁用 void
+  # disallow `void` operators
+  # 禁用 void 操作符
   no-void: 1
 
-  # 禁用警告注释
+  # disallow specified warning terms in comments
+  # 禁止在注释中使用特定的警告术语
   no-warning-comments: 0
 
-  # 禁用 with
+  # disallow `with` statements
+  # 禁用 with 语句
   no-with: 2
 
-  # 建议给正则表达式的捕获组命名
+  # enforce using named capture group in regular expression
+  # 建议在正则表达式中使用命名捕获组
   prefer-named-capture-group: 0
 
-  # 要求使用 Error 对象作为 reject 的参数
+  # require using Error objects as Promise rejection reasons
+  # 要求使用 Error 对象作为 Promise 拒绝的原因
   prefer-promise-reject-errors: 0
 
-  # 要求 parseInt 有基数
-  radix: 1
+  # disallow use of the `RegExp` constructor in favor of regular expression literals
+  prefer-regex-literals: 2
 
-  # 禁止在没有 await 语句的时候使用 async
+  # enforce the consistent use of the radix argument when using `parseInt()`
+  # 强制在 parseInt() 使用基数参数
+  radix: 2
+
+  # disallow async functions which have no `await` expression
+  # 禁止使用不带 await 表达式的 async 函数
   require-await: 2
 
-  # 使用正则表达式的 u 标记
+  # enforce the use of `u` flag on RegExp
+  # 强制在 RegExp 上使用 u 标志
   require-unicode-regexp: 0
 
-  # 要求变量声明放在作用域的顶部
+  # require `var` declarations be placed at the top of their containing scope
+  # 要求所有的 var 声明出现在它们所在的作用域顶部
   vars-on-top: 0
 
+  # require parentheses around immediate `function` invocations
   # 要求 IIFE 使用括号括起来
   wrap-iife: 0
 
-  # Yoda 条件
-  # 字面量放在前面的条件判断称之为 yoda 条件
+  # require or disallow "Yoda" conditions
+  # 要求或禁止 “Yoda” 条件
   yoda: 0
 
-  # ===========
+  # =======================
   # Strict Mode
+  # =======================
 
-  # 采用严格模式
+  # These rules relate to strict mode directives
+
+  # require or disallow strict mode directives
+  # 要求或禁止使用严格模式指令
   strict: 0
 
-  # ===========
+  # =======================
   # Variables
-  # `https://eslint.org/docs/rules/#variables`
+  # =======================
 
-  # 变量声明时进行初始化
+  # These rules relate to variable declarations
+
+  # require or disallow initialization in variable declarations
+  # 要求或禁止 var 声明中的初始化
   init-declarations: 0
 
-  # 禁止 catch 语句中的覆盖变量
-  # 该规则已废弃，使用 no-shadow 替代
-  no-catch-shadow: 0
-
+  # disallow deleting variables
   # 禁止删除变量
   no-delete-var: 2
 
-  # 禁止变量与标签重名
+  # disallow labels that share a name with a variable
+  # 不允许标签与变量同名
   no-label-var: 2
 
-  # 禁止指定的全局变量
+  # disallow specified global variables
+  # 禁用特定的全局变量
   no-restricted-globals: 0
-  # no-restricted-globals:
-  #   - 2
-  #   - event
-  #   - fdescribe
 
-  # 禁止变量覆盖外层作用域的变量
-  no-shadow: 1
+  # disallow variable declarations from shadowing variables declared in the outer scope
+  # 禁止变量声明与外层作用域的变量同名
+  no-shadow:
+    - 2
+    -
+      builtinGlobals: true
+      hoist: functions
+      allow:
+        - err
+        - error
+        - resolve
+        - reject
+        - done
+        - callback
+        - cb
 
-  # 关键字不能被遮蔽
-  no-shadow-restricted-names: 0
+  # disallow identifiers from shadowing restricted names
+  # 禁止将标识符定义为受限的名字
+  no-shadow-restricted-names: 2
 
-  # 禁止未声明的变量
+  # disallow the use of undeclared variables unless mentioned in `/*global */` comments
+  # 禁用未声明的变量，除非它们在 /*global */ 注释中被提到
   no-undef: 2
 
-  # 禁止变量初始化为 undefined
+  # disallow initializing variables to `undefined`
+  # 禁止将变量初始化为 undefined
   no-undef-init: 2
 
+  # disallow the use of `undefined` as an identifier
   # 禁止将 undefined 作为标识符
-  no-undefined: 0
+  no-undefined: 2
 
-  # 禁止未使用的变量
+  # disallow unused variables
+  # 禁止出现未使用过的变量
   no-unused-vars:
     - 2
-    - 
+    -
       vars: all
       args: none
       ignoreRestSiblings: true
       caughtErrors: none
 
-  # 禁止定义前使用
-  no-use-before-define: [1, {functions: false, variables: true, classes: true}]
+  # disallow the use of variables before they are defined
+  # 禁止在变量定义之前使用它们
+  no-use-before-define:
+    - 2
+    -
+      functions: false
+      classes: true
+      variables: true
 
-  # ====================
-  # Node.js and CommonJS
-  # `https://eslint.org/docs/rules/#nodejs-and-commonjs`
-
-  # 要求回调函数里面有 return 语句
-  callback-return: 0
-
-  # 要求 require 出现在顶部
-  global-require: 0
-
-  # 强制回调错误处理
-  handle-callback-err: 0
-
-  # 禁用 Buffer 构造函数
-  # 通过 Buffer.alloc 等方法进行调用
-  no-buffer-constructor: 0
-
-  # 禁止 require 与普通变量声明混合使用
-  no-mixed-requires: 0
-
-  # 禁用 new require
-  no-new-require: 2
-
-  # 禁止对 __dirname 和 __filename 进行直接字符串拼接
-  # 推荐使用 path.join 和 path.resolve 替代
-  no-path-concat: 0
-
-  # 禁用 process.env
-  no-process-env: 0
-
-  # 禁用 process.exit
-  no-process-exit: 0
-
-  # 禁用指定的模块
-  no-restricted-modules: 0
-
-  # 禁用同步方法
-  no-sync: 0
-
-  # ================
+  # =======================
   # Stylistic Issues
-  # `https://eslint.org/docs/rules/#stylistic-issues`
+  # =======================
 
-  # 数组中的括号和换行
-  # consistent 对每个括号要求使用一致的换行符
-  # multiline 如果数组元素内或元素间有换行，则要求换行
-  array-bracket-newline: [2, {
-    multiline: true
-  }]
+  # These rules relate to style guidelines, and are therefore quite subjective
 
-  # 数组中使用风格统一的空格
-  array-bracket-spacing: [2, never]
+  # enforce linebreaks after opening and before closing array brackets
+  # 在数组开括号后和闭括号前强制换行
+  array-bracket-newline:
+    - 0
+    -
+      multiline: true
+      minItems: 2
 
-  # 数组元素的换行
-  array-element-newline: [2, {
-    multiline: true
-  }]
+  # enforce consistent spacing inside array brackets
+  # 强制数组方括号中使用一致的空格
+  array-bracket-spacing:
+    - 2
+    - never
 
-  # 代码块内花括号的空格
+  # enforce line breaks after each array element
+  # 强制数组元素间出现换行
+  array-element-newline:
+    - 0
+    - consistent
+
+  # disallow or enforce spaces inside of blocks after opening block and before closing block
+  # 禁止或强制在代码块中开括号前和闭括号后有空格
   block-spacing: 2
 
-  # 花括号风格
-  # 1tbs: one true brace style
-  brace-style: [2, 1tbs, {allowSingleLine: true}]
+  # enforce consistent brace style for blocks
+  # 强制在代码块中使用一致的大括号风格
+  brace-style:
+    - 2
+    - 1tbs
+    -
+      allowSingleLine: true
 
-  # 使用驼峰拼写
+  # enforce camelcase naming convention
+  # 强制使用骆驼拼写法命名约定
   camelcase: 0
 
-  # 注释首字母大写
+  # enforce or disallow capitalization of the first letter of a comment
+  # 强制或禁止对注释的第一个字母大写
   capitalized-comments: 0
 
-  # 禁止拖尾逗号
+  # require or disallow trailing commas
+  # 要求或禁止末尾逗号
   comma-dangle: 0
 
-  # 逗号周围的空格
-  # 默认逗号前无空格，逗号后一个空格
+  # enforce consistent spacing before and after commas
+  # 强制在逗号前后使用一致的空格
   comma-spacing: 2
 
-  # 逗号风格
-  # 直接跟随，不另起一行出现在第一个位置
+  # enforce consistent comma style
+  # 强制使用一致的逗号风格
   comma-style: 2
 
-  # 计算属性中使用空格
-  # 默认禁止使用
+  # enforce consistent spacing inside computed property brackets
+  # 强制在计算的属性的方括号中使用一致的空格
   computed-property-spacing: 2
 
-  # 一致的 this
+  # enforce consistent naming when capturing the current execution context
+  # 当获取当前执行环境的上下文时，强制使用一致的命名
   consistent-this: 0
 
-  # 文件末尾空行
+  # require or disallow newline at the end of files
+  # 要求或禁止文件末尾存在空行
   eol-last: 2
 
-  # 函数调用时的括号与函数名中间的空格
-  # 默认禁止使用空格
+  # require or disallow spacing between function identifiers and their invocations
+  # 要求或禁止在函数标识符和其调用之间有空格
   func-call-spacing: 2
 
-  # 要求函数表达式命名与变量名匹配
+  # require function names to match the name of the variable or property to which they are assigned
+  # 要求函数名与赋值给它们的变量名或属性名相匹配
   func-name-matching: 0
 
-  # 命名函数表达式
+  # require or disallow named `function` expressions
+  # 要求或禁止使用命名的 function 表达式
   func-names: 0
 
-  # 函数声明或者表达式风格统一
+  # enforce the consistent use of either `function` declarations or expressions
+  # 强制一致地使用 function 声明或表达式
   func-style: 0
 
-  # 函数参数的位置
-  # consistent 要求每个括号使用一致的换行
-  function-paren-newline: [2, consistent]
+  # enforce line breaks between arguments of a function call
+  function-call-argument-newline:
+    - 2
+    - consistent
 
-  # 禁止指定的标识符
-  id-blacklist: 0
+  # enforce consistent line breaks inside function parentheses
+  # 强制在函数括号内使用一致的换行
+  function-paren-newline:
+    - 2
+    - consistent
 
-  # 标识符的最大长度
+  # disallow specified identifiers
+  id-denylist: 0
+
+  # enforce minimum and maximum identifier lengths
+  # 强制标识符的最小和最大长度
   id-length: 0
 
-  # 标识符匹配正则表达式
+  # require identifiers to match a specified regular expression
+  # 要求标识符匹配一个指定的正则表达式
   id-match: 0
 
-  # 箭头函数的函数体换行
-  # 默认不换行
+  # enforce the location of arrow function bodies
+  # 强制隐式返回的箭头函数体的位置
   implicit-arrow-linebreak: 2
 
-  # 缩进风格
-  # 这里使用两个空格作为缩进
-  indent: [2, 2, {SwitchCase: 1}]
+  # enforce consistent indentation
+  # 强制使用一致的缩进
+  indent:
+    - 2
+    - 2
+    -
+      SwitchCase: 1
 
-  # JSX 中属性使用一致的引号
+  # enforce the consistent use of either double or single quotes in JSX attributes
+  # 强制在 JSX 属性中一致地使用双引号或单引号
   jsx-quotes: 0
 
-  # 对象字面量的键和值之间的空格
+  # enforce consistent spacing between keys and values in object literal properties
+  # 强制在对象字面量的属性中键和值之间使用一致的间距
   key-spacing: 2
-  # key-spacing:
-  #   - 2
-  #   - beforeColon: false
-  #     afterColon: true
 
-  # 关键字前后的空格
+  # enforce consistent spacing before and after keywords
+  # 强制在关键字前后使用一致的空格
   keyword-spacing: 2
 
-  # 行注释的位置
+  # enforce position of line comments
+  # 强制行注释的位置
   line-comment-position: 0
 
-  # 换行符风格
+  # enforce consistent linebreak style
+  # 强制使用一致的换行风格
   linebreak-style: 0
 
-  # 要求注释周围有空行
+  # require empty lines around comments
+  # 要求在注释周围有空行
   lines-around-comment: 0
 
-  # class 里面的成员之间使用空行隔开
+  # require or disallow an empty line between class members
+  # 要求或禁止类成员之间出现空行
   lines-between-class-members: 0
 
-  # 可嵌套的块的最大深度
+  # enforce a maximum depth that blocks can be nested
+  # 强制可嵌套的块的最大深度
   max-depth: 0
 
-  # 一行的最大长度
+  # enforce a maximum line length
+  # 强制一行的最大长度
   max-len: 0
 
-  # 最大的行数
+  # enforce a maximum number of lines per file
+  # 强制最大行数
   max-lines: 0
 
-  # 函数的最大行数
+  # enforce a maximum number of line of code in a function
+  # 强制函数最大代码行数
   max-lines-per-function: 0
 
-  # 回调最大嵌套数
+  # enforce a maximum depth that callbacks can be nested
+  # 强制回调函数最大嵌套深度
   max-nested-callbacks: 0
 
-  # 最多允许的函数参数的个数
+  # enforce a maximum number of parameters in function definitions
+  # 强制函数定义中最多允许的参数数量
   max-params: 0
 
-  # 函数块中最多允许的语句数量
+  # enforce a maximum number of statements allowed in function blocks
+  # 强制函数块最多允许的的语句数量
   max-statements: 0
 
-  # 每一行允许的最大语句数量
+  # enforce a maximum number of statements allowed per line
+  # 强制每一行中所允许的最大语句数量
   max-statements-per-line: 0
 
-  # 多行注释
+  # enforce a particular style for multiline comments
+  # 强制对多行注释使用特定风格
   multiline-comment-style: 0
 
-  # 使用多行模式的三目运算符
+  # enforce newlines between operands of ternary expressions
+  # 要求或禁止在三元操作数中间换行
   multiline-ternary: 0
 
-  # 构造函数首字母大写
+  # require constructor names to begin with a capital letter
+  # 要求构造函数首字母大写
   new-cap: 0
-  # new-cap: [2, {capIsNewExceptionPattern: $.*}]
 
-  # 调用无参数构造函数时带括号
+  # enforce or disallow parentheses when invoking a constructor with no arguments
+  # 强制或禁止调用无参构造函数时有圆括号
   new-parens: 2
 
-  # 链式调用时换行
+  # require a newline after each call in a method chain
+  # 要求方法链中每个调用都有一个换行符
   newline-per-chained-call: 0
 
+  # disallow `Array` constructors
   # 禁用 Array 构造函数
   no-array-constructor: 2
 
-  # 禁用按位运算
+  # disallow bitwise operators
+  # 禁用按位运算符
   no-bitwise: 0
 
-  # 禁用 continue
+  # disallow `continue` statements
+  # 禁用 continue 语句
   no-continue: 0
 
-  # 禁止代码内联注释
+  # disallow inline comments after code
+  # 禁止在代码后使用内联注释
   no-inline-comments: 0
 
-  # 禁止单独的 if 语句作为 else 语句块
-  no-lonely-if: 1
+  # disallow `if` statements as the only statement in `else` blocks
+  # 禁止 if 作为唯一的语句出现在 else 语句中
+  no-lonely-if: 2
 
+  # disallow mixed binary operators
   # 禁止混合使用不同的操作符
   no-mixed-operators: 0
-  # no-mixed-operators: 1
 
+  # disallow mixed spaces and tabs for indentation
   # 禁止空格和 tab 的混合缩进
   no-mixed-spaces-and-tabs: 2
 
-  # 禁止链式声明
-  no-multi-assign: 1
+  # disallow use of chained assignment expressions
+  # 禁止连续赋值
+  no-multi-assign: 2
 
-  # 禁止多个空行
-  no-multiple-empty-lines: [2, {max: 4, maxEOF: 4, maxBOF: 4}]
+  # disallow multiple empty lines
+  # 禁止出现多行空行
+  no-multiple-empty-lines:
+    - 2
+    -
+      max: 4
+      maxEOF: 4
+      maxBOF: 4
 
-  # 禁止否定表达式
-  no-negated-condition: 1
+  # disallow negated conditions
+  # 禁用否定的表达式
+  no-negated-condition: 2
 
-  # 禁止嵌套三元表达式
-  no-nested-ternary: 0
+  # disallow nested ternary expressions
+  # 禁用嵌套的三元表达式
+  no-nested-ternary: 2
 
-  # 禁用 Object 构造函数
+  # disallow `Object` constructors
+  # 禁用 Object 的构造函数
   no-new-object: 2
 
-  # 禁用自增和自减
+  # disallow the unary operators `++` and `--`
+  # 禁用一元操作符 ++ 和 --
   no-plusplus: 0
 
-  # 禁止指定的语法
+  # disallow specified syntax
+  # 禁用特定的语法
   no-restricted-syntax: 0
 
-  # 禁止 tab
+  # disallow all tabs
+  # 禁用 tab
   no-tabs: 2
 
+  # disallow ternary operators
   # 禁用三元操作符
   no-ternary: 0
 
-  # 禁止拖尾空格
+  # disallow trailing whitespace at the end of lines
+  # 禁用行尾空格
   no-trailing-spaces: 2
 
-  # 禁止悬空下划线
+  # disallow dangling underscores in identifiers
+  # 禁止标识符中有悬空下划线
   no-underscore-dangle: 0
 
-  # 禁止不必要的三元操作符
-  no-unneeded-ternary: 1
+  # disallow ternary operators when simpler alternatives exist
+  # 禁止可以在有更简单的可替代的表达式时使用三元操作符
+  no-unneeded-ternary: 2
 
-  # 禁止属性前的空白
+  # disallow whitespace before properties
+  # 禁止属性前有空白
   no-whitespace-before-property: 2
 
-  # 单行语句的位置
+  # enforce the location of single-line statements
+  # 强制单个语句的位置
   nonblock-statement-body-position: 0
 
-  # 花括号内的换行符
+  # enforce consistent line breaks inside braces
+  # 强制大括号内换行符的一致性
   object-curly-newline: 0
 
-  # 对象花括号内的空格
+  # enforce consistent spacing inside braces
+  # 强制在大括号中使用一致的空格
   object-curly-spacing: 0
 
-  # 对象属性在不同的行上
+  # enforce placing object properties on separate lines
+  # 强制将对象的属性放在不同的行上
   object-property-newline: 0
 
-  # 变量声明要么在同一行，要么分别分开
+  # enforce variables to be declared either together or separately in functions
+  # 强制函数中的变量要么一起声明要么分开声明
   one-var: 0
 
-  # 变量声明周围换行
+  # require or disallow newlines around variable declarations
+  # 要求或禁止在变量声明周围换行
   one-var-declaration-per-line: 0
 
-  # 尽可能的简化赋值操作
+  # require or disallow assignment operator shorthand where possible
+  # 要求或禁止在可能的情况下使用简化的赋值操作符
   operator-assignment: 0
 
-  # 操作符换行风格统一
+  # enforce consistent linebreak style for operators
+  # 强制操作符使用一致的换行符
   operator-linebreak: 0
 
-  # 块内填充
+  # require or disallow padding within blocks
+  # 要求或禁止块内填充
   padded-blocks: 0
 
-  # 语句之间填充
+  # require or disallow padding lines between statements
+  # 要求或禁止在语句间填充空行
   padding-line-between-statements: 0
 
-  # 使用在 Object.assign 中使用对象展开运算符
+  # disallow the use of `Math.pow` in favor of the `**` operator
+  prefer-exponentiation-operator: 0
+
+  # disallow using Object.assign with an object literal as the first argument and prefer the use of object spread instead.
+  # 禁止使用以对象字面量作为第一个参数的 Object.assign，优先使用对象扩展。
   prefer-object-spread: 0
 
-  # 对象字面量属性名使用括号括起来
-  quote-props: 0
+  # require quotes around object literal property names
+  # 要求对象字面量属性名称用引号括起来
+  quote-props:
+    - 2
+    - as-needed
 
-  # 使用风格一致的反勾号、双引号或单引号
-  quotes: [2, single]
-  # quotes: 0
+  # enforce the consistent use of either backticks, double, or single quotes
+  # 强制使用一致的反勾号、双引号或单引号
+  quotes:
+    - 2
+    - single
 
-  # 分号
-  # semi: [2, always, {omitLastInOneLineBlock: true}]
+  # require or disallow semicolons instead of ASI
+  # 要求或禁止使用分号代替 ASI
   semi: 0
 
-  # 分号前后的空格
-  semi-spacing: [2, {before: false, after: true}]
+  # enforce consistent spacing before and after semicolons
+  # 强制分号之前和之后使用一致的空格
+  semi-spacing:
+    - 2
+    -
+      before: false
+      after: true
 
-  # 分号的位置
+  # enforce location of semicolons
+  # 强制分号的位置
   semi-style: 2
 
-  # 对象字面量中的键进行排序
+  # require object keys to be sorted
+  # 要求对象属性按序排列
   sort-keys: 0
 
-  # 声明变量时排序
+  # require variables within the same declaration block to be sorted
+  # 要求同一个声明块中的变量按顺序排列
   sort-vars: 0
 
-  # 语句块前后的空格
-  space-before-blocks: [2, always]
+  # enforce consistent spacing before blocks
+  # 强制在块之前使用一致的空格
+  space-before-blocks:
+    - 2
+    - always
 
-  # 函数圆括号之前的空格
+  # enforce consistent spacing before `function` definition opening parenthesis
+  # 强制在 function 的左括号之前使用一致的空格
   space-before-function-paren:
     - 2
-    - anonymous: always
+    -
+      anonymous: always
       named: never
       asyncArrow: always
 
-  # 圆括号内的空格
+  # enforce consistent spacing inside parentheses
+  # 强制在圆括号内使用一致的空格
   space-in-parens: 2
 
-  # 中缀操作符周围的空格
+  # require spacing around infix operators
+  # 要求操作符周围有空格
   space-infix-ops: 2
 
-  # 一元操作符前后的空格
-  space-unary-ops: [2, {words: true, nonwords: false}]
+  # enforce consistent spacing before or after unary operators
+  # 强制在一元操作符前后使用一致的空格
+  space-unary-ops:
+    - 2
+    -
+      words: true
+      nonwords: false
 
-  # 注释中的空格
+  # enforce consistent spacing after the `//` or `/*` in a comment
+  # 强制在注释中 // 或 /* 使用一致的空格
   spaced-comment:
    - 2
    - always
@@ -789,121 +1068,170 @@ rules:
        exceptions: ["*"]
        balanced: true
 
-  # switch 语句中冒号前后的空格
+  # enforce spacing around colons of switch statements
+  # 强制在 switch 的冒号左右有空格
   switch-colon-spacing: 2
 
-  # 模板字符调用时的空格
-  # 函数可以直接跟模板字符串作为参数进行调用，无需括号
-  # 默认为 never，不使用空格
+  # require or disallow spacing between template tags and their literals
+  # 要求或禁止在模板标记和它们的字面量之间有空格
   template-tag-spacing: 2
 
-  # 使用 Unicode 字节顺序标记
+  # require or disallow Unicode byte order mark (BOM)
+  # 要求或禁止 Unicode 字节顺序标记 (BOM)
   unicode-bom: 0
 
-  # 将正则表达式字面量括起来
+  # require parenthesis around regex literals
+  # 要求正则表达式被括号括起来
   wrap-regex: 0
 
-  # ============
+  # =======================
   # ECMAScript 6
-  # `https://eslint.org/docs/rules/#ecmascript-6`
+  # =======================
 
-  # 箭头函数体使用花括号
-  # 默认值为 as-needed，能省则省
-  arrow-body-style: 1
+  # These rules relate to ES6, also known as ES2015
 
-  # 箭头函数的参数使用圆括号
-  # 默认要求使用圆括号
-  # as-needed 表示能省则省
-  # requireForBlockBody 参数表示函数体带花括号
-  # false 表示关闭，单参数也不要带括号
-  arrow-parens: [2, as-needed, {requireForBlockBody: false}]
+  # require braces around arrow function bodies
+  # 要求箭头函数体使用大括号
+  arrow-body-style:
+    - 2
+    - as-needed
 
-  # 箭头函数的箭头前后的空格
-  # 默认前后都要有空格
+  # require parentheses around arrow function arguments
+  # 要求箭头函数的参数使用圆括号
+  arrow-parens:
+    - 2
+    - as-needed
+    -
+      requireForBlockBody: false
+
+  # enforce consistent spacing before and after the arrow in arrow functions
+  # 强制箭头函数的箭头前后使用一致的空格
   arrow-spacing: 2
 
-  # 构造函数中使用 super
-  constructor-super: 1
+  # require `super()` calls in constructors
+  # 要求在构造函数中有 super() 的调用
+  constructor-super: 2
 
-  # 生成器构造函数的 * 号周围的空格
-  generator-star-spacing: [2, before]
+  # enforce consistent spacing around `*` operators in generator functions
+  # 强制 generator 函数中 * 号周围使用一致的空格
+  generator-star-spacing:
+    - 2
+    - before
 
+  # disallow reassigning class members
   # 禁止修改类声明的变量
   no-class-assign: 2
 
-  # 禁止使用令人困惑的箭头函数
-  no-confusing-arrow: 2
+  # disallow arrow functions where they could be confused with comparisons
+  # 禁止在可能与比较操作符相混淆的地方使用箭头函数
+  no-confusing-arrow:
+    - 2
+    -
+      allowParens: true
 
-  # 禁止修改 const 变量
+  # disallow reassigning `const` variables
+  # 禁止修改 const 声明的变量
   no-const-assign: 2
 
-  # 禁止类成员的名称重复
+  # disallow duplicate class members
+  # 禁止类成员中出现重复的名称
   no-dupe-class-members: 2
 
-  # 禁止重复的 import
+  # disallow duplicate module imports
+  # 禁止重复模块导入
   no-duplicate-imports: 2
 
-  # 禁用 new Symbol
+  # disallow `new` operators with the `Symbol` object
+  # 禁止 Symbolnew 操作符和 new 一起使用
   no-new-symbol: 2
 
-  # 禁止指定模块的 import
+  # disallow specified names in exports
+  no-restricted-exports: 0
+
+  # disallow specified modules when loaded by `import`
+  # 禁止使用指定的 import 加载的模块
   no-restricted-imports: 0
 
+  # disallow `this`/`super` before calling `super()` in constructors
   # 禁止在构造函数中，在调用 super() 之前使用 this 或 super
   no-this-before-super: 2
 
-  # 禁止不必要的计算属性
+  # disallow unnecessary computed property keys in objects and classes
+  # 禁止在对象中使用不必要的计算属性
   no-useless-computed-key: 2
 
-  # 禁止不必要的构造函数
-  no-useless-constructor: 0
+  # disallow unnecessary constructors
+  # 禁用不必要的构造函数
+  no-useless-constructor: 2
 
-  # 禁止修改 import、export、解构声明的名字重复
-  no-useless-rename: 0
+  # disallow renaming import, export, and destructured assignments to the same name
+  # 禁止在 import 和 export 和解构赋值时将引用重命名为相同的名字
+  no-useless-rename: 2
 
-  # 使用 let 或 const 来替代 var
-  no-var: 0
+  # require `let` or `const` instead of `var`
+  # 要求使用 let 或 const 而不是 var
+  no-var: 2
 
-  # 对象字面量简写
-  object-shorthand: 0
+  # require or disallow method and property shorthand syntax for object literals
+  # 要求或禁止对象字面量中方法和属性使用简写语法
+  object-shorthand:
+    - 2
+    - always
+    -
+      avoidQuotes: true
+      ignoreConstructors: true
+      avoidExplicitReturnArrows: true
 
-  # 使用箭头函数作为回调
+  # require using arrow functions for callbacks
+  # 要求回调函数使用箭头函数
   prefer-arrow-callback: 0
 
-  # 强制使用 const 声明不可变变量
-  prefer-const: 0
+  # require `const` declarations for variables that are never reassigned after declared
+  # 要求使用 const 声明那些声明后不再被修改的变量
+  prefer-const: 2
 
-  # 强制对数组和对象使用解构
+  # require destructuring from arrays and/or objects
+  # 优先使用数组和对象解构
   prefer-destructuring: 0
 
-  # 禁止使用 parseInt 来表示二进制、八进制和十六进制数值
+  # disallow `parseInt()` and `Number.parseInt()` in favor of binary, octal, and hexadecimal literals
+  # 禁用 parseInt() 和 Number.parseInt()，使用二进制，八进制和十六进制字面量
   prefer-numeric-literals: 0
 
-  # 强制使用余参
+  # require rest parameters instead of `arguments`
+  # 要求使用剩余参数而不是 arguments
   prefer-rest-params: 0
 
-  # 强制使用展开运算符
+  # require spread operators instead of `.apply()`
+  # 要求使用扩展运算符而非 .apply()
   prefer-spread: 0
 
-  # 强制使用模板变量来拼接字符串
+  # require template literals instead of string concatenation
+  # 要求使用模板字面量而非字符串连接
   prefer-template: 0
 
-  # 要求 generator 函数内有 yeild
+  # require generator functions to contain `yield`
+  # 要求 generator 函数内有 yield
   require-yield: 2
 
-  # ... 运算符后的空格
-  # 默认不要空格
+  # enforce spacing between rest and spread operators and their expressions
+  # 强制剩余和扩展运算符及其表达式之间有空格
   rest-spread-spacing: 2
 
-  # import 排序
+  # enforce sorted import declarations within modules
+  # 强制模块内的 import 排序
   sort-imports: 0
 
-  # 使用 Symbol 时指定描述
+  # require symbol descriptions
+  # 要求 symbol 描述
   symbol-description: 2
 
-  # 模板变量中花括号前后的空格
-  # 默认禁止空格
+  # require or disallow spacing around embedded expressions of template strings
+  # 要求或禁止模板字符串中的嵌入表达式周围空格的使用
   template-curly-spacing: 2
 
-  # yield* 表达式中 * 前后的空格
-  yield-star-spacing: [2, after]
+  # require or disallow spacing around the `*` in `yield*` expressions
+  # 强制在 yield* 表达式中 * 周围使用空格
+  yield-star-spacing:
+    - 2
+    - after

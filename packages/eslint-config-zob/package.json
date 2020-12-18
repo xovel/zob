@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-zob",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "ESLint config for zob system.",
   "author": "xovel <xovel@vip.qq.com>",
   "repository": {
@@ -8,14 +8,15 @@
     "url": "https://github.com/xovel/zob.git"
   },
   "peerDependencies": {
-    "eslint": "^7.0.0",
-    "eslint-plugin-vue": "^5.8.0"
+    "eslint": "^7.15.0",
+    "eslint-plugin-vue": ">=5.8.0"
   },
   "keywords": [
     "zob",
     "js",
     "eslint",
-    "config"
+    "config",
+    "vue"
   ],
   "license": "MIT",
   "bugs": {

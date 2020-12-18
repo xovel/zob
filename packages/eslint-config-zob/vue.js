@@ -63,10 +63,18 @@ module.exports = {
       2,
       'double'
     ],
-    'vue/html-self-closing': 0,
+    'vue/html-self-closing': [
+      2,
+      {
+        html: {
+          void: 'always',
+          normal: 'never'
+        }
+      }
+    ],
     'vue/max-attributes-per-line': 0,
     'vue/multiline-html-element-content-newline': 0,
-    'vue/mustache-interpolation-spacing': 0,
+    'vue/mustache-interpolation-spacing': 2,
     'vue/name-property-casing': [
       2,
       'PascalCase'
@@ -79,7 +87,7 @@ module.exports = {
       'camelCase'
     ],
     'vue/require-default-prop': 2,
-    'vue/require-prop-types': 1,
+    'vue/require-prop-types': 2,
     'vue/singleline-html-element-content-newline': 0,
     'vue/v-bind-style': [
       2,
@@ -89,7 +97,19 @@ module.exports = {
       2,
       'shorthand'
     ],
-    'vue/attributes-order': 0,
+    'vue/attributes-order': 2,
+    'vue/component-tags-order': [
+      2,
+      {
+        order: [
+          'docs',
+          'template',
+          'i18n',
+          'script',
+          'style'
+        ]
+      }
+    ],
     'vue/no-v-html': 1,
     'vue/order-in-components': 2,
     'vue/this-in-template': [
@@ -111,18 +131,29 @@ module.exports = {
     ],
     'vue/camelcase': 0,
     'vue/comma-dangle': 2,
-    'vue/component-name-in-template-casing': 0,
-    'vue/eqeqeq': 0,
+    'vue/component-name-in-template-casing': [
+      2,
+      'kebab-case'
+    ],
+    'vue/dot-location': [
+      2,
+      'property'
+    ],
+    'vue/eqeqeq': 2,
     'vue/key-spacing': 2,
+    'vue/keyword-spacing': 2,
     'vue/match-component-file-name': 0,
-    'vue/no-boolean-default': 0,
+    'vue/no-boolean-default': 2,
+    'vue/no-deprecated-scope-attribute': 1,
+    'vue/no-empty-pattern': 2,
     'vue/no-restricted-syntax': 0,
     'vue/object-curly-spacing': 0,
     'vue/require-direct-export': 0,
     'vue/script-indent': 0,
-    'vue/space-infix-ops': 0,
-    'vue/space-unary-ops': 0,
+    'vue/space-infix-ops': 2,
+    'vue/space-unary-ops': 2,
     'vue/v-on-function-call': 0,
-    'vue/v-slot-style': 0
+    'vue/v-slot-style': 0,
+    'vue/valid-v-slot': 2
   }
 }

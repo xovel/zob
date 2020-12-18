@@ -21,6 +21,10 @@
   },
   "homepage": "https://github.com/xovel/zob#readme",
   "devDependencies": {
-    "js-yaml": "^3.14.1"
+    "eslint": "^7.15.0",
+    "eslint-plugin-vue": "^7.2.0",
+    "js-yaml": "^3.14.1",
+    "stylelint": "^13.8.0",
+    "stylelint-order": "^4.1.0"
   }
 }

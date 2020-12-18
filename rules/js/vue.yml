@@ -1,5 +1,5 @@
 extends:
-  - 'plugin:vue/base'
+  - plugin:vue/base
   - ./index.js
 
 rules:
@@ -153,10 +153,17 @@ rules:
   vue/html-indent: 2
 
   # HTML 属性的引号
-  vue/html-quotes: [2, double]
+  vue/html-quotes:
+    - 2
+    - double
 
   # 无内容的标签使用自闭合
-  vue/html-self-closing: 0
+  vue/html-self-closing:
+    - 2
+    -
+      html:
+        void: always
+        normal: never
 
   # template 中的标签属性的每行最大个数
   vue/max-attributes-per-line: 0
@@ -165,7 +172,7 @@ rules:
   vue/multiline-html-element-content-newline: 0
 
   # 插值语法的空格
-  vue/mustache-interpolation-spacing: 0
+  vue/mustache-interpolation-spacing: 2
 
   # 组件名称大命名风格
   vue/name-property-casing: [2, PascalCase]
@@ -186,7 +193,7 @@ rules:
   vue/require-default-prop: 2
 
   # 必须给 prop 声明类型
-  vue/require-prop-types: 1
+  vue/require-prop-types: 2
 
   # 单行元素时需要进行换行
   vue/singleline-html-element-content-newline: 0
@@ -202,7 +209,18 @@ rules:
   # ================================================
 
   # 属性排序
-  vue/attributes-order: 0
+  vue/attributes-order: 2
+
+  # 组件内顶级标签的顺序
+  vue/component-tags-order:
+    - 2
+    -
+      order:
+        - docs
+        - template
+        - i18n
+        - script
+        - style
 
   # 禁止 v-html
   vue/no-v-html: 1
@@ -237,39 +255,36 @@ rules:
   vue/comma-dangle: 2
 
   # 模板中组件名的大小写
-  vue/component-name-in-template-casing: 0
+  vue/component-name-in-template-casing:
+    - 2
+    - kebab-case
 
   # 强制点号之前或之后换行
   # property 表示点号与属性同行
   # object 表示点号与对象同行
-  # 暂未发布
-  # vue/dot-location: [2, property]
+  vue/dot-location: [2, property]
 
   # 使用全等进行判断
-  # 这里关闭该项检查，模板中不做强制要求
-  vue/eqeqeq: 0
+  vue/eqeqeq: 2
 
   # 对象字面量的键和值之间的空格
   vue/key-spacing: 2
 
   # 关键字前后的空格
-  # 暂未发布
-  # vue/keyword-spacing: 2
+  vue/keyword-spacing: 2
 
   # 组件名与文件名一致
   vue/match-component-file-name: 0
 
   # 禁止在属性为布尔类型时指定默认值
-  vue/no-boolean-default: 0
+  vue/no-boolean-default: 2
 
   # 禁止使用已废弃的 scope 属性
   # Vue.js v2.5.0+
-  # 暂未发布
-  # vue/no-deprecated-scope-attribute: 1
+  vue/no-deprecated-scope-attribute: 1
 
   # 禁止空解构
-  # 暂未发布
-  # vue/no-empty-pattern: 2
+  vue/no-empty-pattern: 2
 
   # 禁止指定的语法
   vue/no-restricted-syntax: 0
@@ -285,23 +300,18 @@ rules:
   vue/script-indent: 0
 
   # 中缀操作符周围的空格
-  # 模板中不做限制
-  vue/space-infix-ops: 0
+  vue/space-infix-ops: 2
 
   # 一元操作符前后的空格
-  # 模板中不做限制
-  vue/space-unary-ops: 0
+  vue/space-unary-ops: 2
 
   # v-on 指令绑定的函数的 call
   # 即令人疑惑的 foo 和 foo()
-  # 这里不做限制
   vue/v-on-function-call: 0
 
   # v-slot 指令的风格
   # 是否采用 # 号进行缩写
-  # 这里不做限制
   vue/v-slot-style: 0
 
   # 正确使用 v-slot 指令
-  # 暂未发布
-  # vue/valid-v-slot: 2
+  vue/valid-v-slot: 2
