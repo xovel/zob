@@ -2,6 +2,7 @@
 
 // describe('测试 eslint 规则', function () {
 //   it('comment 规则', function () {
+
     const rule = require('../lib/rules/comment')
     const RuleTester = require('eslint').RuleTester
     const ruleTester = new RuleTester()
@@ -28,14 +29,16 @@ function demo(text) {
           errors: [{
             message: 'Need space',
             type: 'Line'
-          }]
+          }],
+          output: '// xovel 一时心血来潮写了这个插件'
         },
         {
           code: `/* 我是一个demo */`,
           errors: [{
             message: 'Need space',
             type: 'Block'
-          }]
+          }],
+          output: '/* 我是一个 demo */'
         }
       ]
     })

@@ -1,6 +1,7 @@
 {
   "name": "zob",
   "version": "1.0.1",
+  "private": true,
   "description": "A style guide for coding and writing.",
   "author": "xovel <xovel@vip.qq.com>",
   "scripts": {
@@ -24,6 +25,8 @@
     "eslint": "^7.15.0",
     "eslint-plugin-vue": "^7.2.0",
     "js-yaml": "^3.14.1",
+    "mocha": "^8.2.1",
+    "pangu": "^4.0.7",
     "stylelint": "^13.8.0",
     "stylelint-order": "^4.1.0"
   }

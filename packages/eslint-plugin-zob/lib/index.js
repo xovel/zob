@@ -1,5 +1,5 @@
 /**
- * @fileoverview ESLint plugin for `zob` systems.
+ * @fileoverview ESLint plugin for zob system.
  * @author xovel
  */
 

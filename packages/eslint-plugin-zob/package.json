@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-zob",
-  "version": "0.0.2",
-  "description": "ESLint plugin for `zob` systems",
+  "version": "0.1.0",
+  "description": "ESLint plugin for zob system.",
   "author": "xovel <xovel@vip.qq.com>",
   "main": "./lib/index.js",
   "repository": {
@@ -20,10 +20,10 @@
   },
   "homepage": "https://github.com/xovel/zob#readme",
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "mocha": "^6.1.4"
+    "eslint": "^7.15.0",
+    "mocha": "^8.2.1"
   },
-  "dependencies": {
-    "pangu": "^4.0.7"
+  "peerDependencies": {
+    "eslint": "^7.15.0"
   }
 }

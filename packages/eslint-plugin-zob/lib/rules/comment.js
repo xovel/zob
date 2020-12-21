@@ -4,7 +4,7 @@
 // Rule Definition
 //------------------------------------------------------------------------------
 
-const pangu = require('pangu')
+const typeset = require('../utils/typeset')
 
 module.exports = {
   meta: {
@@ -26,8 +26,7 @@ module.exports = {
           .filter(({type}) => type === 'Block' || type === 'Line')
           .forEach(node => {
             const {value, type} = node
-            // 盘古之白
-            const result = pangu.spacing(value)
+            const result = typeset(value)
             if (result !== value) {
               context.report({
                 node: node,
