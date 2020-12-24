@@ -6,9 +6,17 @@ ESLint plugin for zob system.
 
 ### [`zob/comment`](docs/comment.md)
 
-自动在注释中的中文字和半形的英文、数字、符号之间插入空白。
+- Add space between CJK character and alphabet, number, symbol.
+- Fix typeset in Chinese context.
+
+> 自动在 CJK 字符与英文字母、数字、符号之间插入空格，并修复部分中文语境下的排版问题。
 
 ## History
+
+### v0.1.1
+
+- Add `typeset` as an alias to `comment`.
+- Add all punctuation as symbol.
 
 ### v0.1.0
 

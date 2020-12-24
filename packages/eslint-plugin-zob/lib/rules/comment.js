@@ -10,7 +10,7 @@ module.exports = {
   meta: {
     type: 'suggestion',
     docs: {
-      description: '自动在注释中的中文字和半形的英文、数字、符号之间插入空白。',
+      description: 'Fix typeset in Chinese context for comments',
       category: 'Stylistic Issues',
       url: 'https://github.com/xovel/zob/blob/master/packages/eslint-plugin-zob/docs/comment.md'
     },
@@ -30,7 +30,7 @@ module.exports = {
             if (result !== value) {
               context.report({
                 node: node,
-                message: 'Need space',
+                message: 'Typeset or space need to be fixed',
                 fix: function (fixer) {
                   return fixer.replaceText(node, type === 'Block' ? `/*${result}*/` : `//${result}`)
                 }

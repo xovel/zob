@@ -7,6 +7,7 @@
 
 module.exports = {
   rules: {
-    comment: require('./rules/comment')
+    comment: require('./rules/comment'),
+    typeset: require('./rules/comment')
   }
 }

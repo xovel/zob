@@ -22,19 +22,22 @@ const unicodeList = [
   '\\uAC00-\\uD7AF',
   '\\uF900-\\uFAFF',
   '\\uFE30-\\uFE4F',
-  '\\uFF00-\\uFFEF',
+  '\\uFF00-\\uFFEF'
 ]
+
+const punctuation = /[!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]/g
 
 const cjk = `[${unicodeList.join('')}]`
 
 function regex(input) {
   let source = input.source || input
   const flags = input.flags || ''
-  source = source.replace(/cjk/g, cjk)
+  source = source.replace(/cjk/g, cjk).replace(/punctuation/g, punctuation)
   return new RegExp(source, flags)
 }
 
 const fixer = {
+  cjk: cjk,
   punctuation: /(cjk) *([~!;,?]+) */g,
   punctuationSpecial: /(cjk) *([:.]) *(cjk)/g,
   quote: /(cjk)(['"])(.*?)(\2)/g,
@@ -51,15 +54,13 @@ const fixer = {
   alphabetAhead: /([A-Za-z])(cjk)/g,
   number: /(cjk)([0-9])/g,
   numberAhead: /([0-9])(cjk)/g,
-  symbol: /(cjk)([-+=#'"$%@&*([{|<~`])/g,
-  symbolAhead: /([-+=#'"$%@&*)\]}>~`,.?!])(cjk)/g
+  symbol: /(cjk)(punctuation)/g,
+  symbolAhead: /(punctuation)(cjk)/g
 }
 
 Object.keys(fixer).forEach(key => {
   fixer[key] = regex(fixer[key])
 })
-
-fixer.cjk = new RegExp(cjk)
 
 const fullWidthCharMap = {
   '~': '～',
