@@ -96,7 +96,6 @@ module.exports = {
     'function-url-no-scheme-relative': null,
     'function-url-scheme-allowed-list': null,
     'function-url-scheme-disallowed-list': null,
-    'function-whitelist': null,
     'keyframes-name-pattern': null,
     'number-max-precision': [
       2,
@@ -241,7 +240,14 @@ module.exports = {
     ],
     'function-parentheses-newline-inside': 'always-multi-line',
     'function-parentheses-space-inside': 'never-single-line',
-    'function-url-quotes': null,
+    'function-url-quotes': [
+      'never',
+      {
+        except: [
+          'empty'
+        ]
+      }
+    ],
     'function-whitespace-after': 'always',
     'number-leading-zero': 'always',
     'number-no-trailing-zeros': true,
