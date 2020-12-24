@@ -30,7 +30,7 @@ const unicodeList = [
   '\\uAC00-\\uD7AF', // 朝鲜文音节 Hangul Syllables
   '\\uF900-\\uFAFF', // CJK 兼容象形文字 CJK Compatibility Ideograph
   '\\uFE30-\\uFE4F', // CJK 兼容形式竖排样式的横排字符 CJK Compatibility Forms
-  '\\uFF00-\\uFFEF', // 半型及全型形式 Halfwidth and Fullwidth Forms
+  '\\uFF00-\\uFFEF'  // 半型及全型形式 Halfwidth and Fullwidth Forms
 ]
 // -->
 
@@ -214,20 +214,21 @@ F0000..FFFFD;Private Use
 100000..10FFFD; Private Use
 */
 
+// <!--
 // 英文标点符号
 const punctuation = /[!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]/g
 
-// <!--
 const cjk = `[${unicodeList.join('')}]`
 
 function regex(input) {
   let source = input.source || input
   const flags = input.flags || ''
-  source = source.replace(/cjk/g, cjk)
+  source = source.replace(/cjk/g, cjk).replace(/punctuation/g, punctuation)
   return new RegExp(source, flags)
 }
 
 const fixer = {
+  cjk: cjk,
   punctuation: /(cjk) *([~!;,?]+) */g,
   punctuationSpecial: /(cjk) *([:.]) *(cjk)/g,
   quote: /(cjk)(['"])(.*?)(\2)/g,
@@ -244,15 +245,13 @@ const fixer = {
   alphabetAhead: /([A-Za-z])(cjk)/g,
   number: /(cjk)([0-9])/g,
   numberAhead: /([0-9])(cjk)/g,
-  symbol: /(cjk)([-+=#'"$%@&*([{|<~`])/g,
-  symbolAhead: /([-+=#'"$%@&*)\]}>~`,.?!])(cjk)/g
+  symbol: /(cjk)(punctuation)/g,
+  symbolAhead: /(punctuation)(cjk)/g
 }
 
 Object.keys(fixer).forEach(key => {
   fixer[key] = regex(fixer[key])
 })
-
-fixer.cjk = new RegExp(cjk)
 
 const fullWidthCharMap = {
   '~': '～',
