@@ -23,6 +23,8 @@ rules:
   # 属性顺序
   order/properties-order:
     -
+      # Pseudo Element content
+      - content
       # Positioning
       - position
       - top
@@ -31,26 +33,36 @@ rules:
       - left
       - z-index
       # Box Model
+      - box-sizing
       - float
       - clear
       - display
       - flex
+      - flex-direction
+      - justify-content
       - order
       - grid
       - table-layout
       - list-style
-      - box-sizing
       # Dimension
       - width
+      - min-width
+      - max-width
       - height
+      - min-height
+      - max-height
       - padding
       - border
       - border-radius
+      - border-collapse
       - outline
       - margin
       # Stylish
       - color
       - background
+      - background-image
+      - background-color
+      - background-size
       - isolation
       - clip-path
       - mask
@@ -66,20 +78,24 @@ rules:
       - writing-mode
       - direction
       - font
+      - font-family
+      - font-size
       - text-overflow
       - white-space
       - word-wrap
       - word-break
       - line-break
       - text-align
+      - text-justify
+      - line-height
       - letter-spacing
       - word-spacing
       - text-transform
       # Decoration
       - quotes
       - text-indent
-      - text-emphasis
       - text-decoration
+      - text-emphasis
       - text-shadow
       # Transform
       - transform
@@ -98,7 +114,6 @@ rules:
       - ime-mode
       # Misc
       - object-fit
-      - content
       - user-select
     -
       unspecified: ignore

@@ -34,7 +34,6 @@ rules:
   # Disallow missing generic families in lists of font family names.
   # 禁止在字体族名称列表中缺少通用字体族关键字。
   # 这里关闭之
-  # TODO
   font-family-no-missing-generic-family-keyword: null
 
   # -----------------------
@@ -262,11 +261,6 @@ rules:
   # 指定禁用的函数的白名单。
   function-allowed-list: null
 
-  # Specify a list of disallowled functions. (deprecated)
-  # 指定禁用的函数的黑名单。
-  # 使用 function-disallowed-list
-  # function-blacklist: null
-
   # Specify a list of disallowed functions.
   # 指定禁用的函数的黑名单。
   function-disallowed-list: null
@@ -278,30 +272,14 @@ rules:
   # Specify a list of allowed URL schemes.
   function-url-scheme-allowed-list: null
 
-  # Specify a list of disallowed URL schemes. (deprecated)
-  # 指定禁用的 URL 协议的黑名单。
-  # 使用 function-url-scheme-disallowed-list
-  # function-url-scheme-blacklist: null
-
   # Specify a list of disallowed URL schemes.
   function-url-scheme-disallowed-list: null
-
-  # Specify a list of allowed URL schemes. (deprecated)
-  # 指定允许的 URL 协议的白名单。
-  # 使用 function-url-scheme-allowed-list
-  # function-url-scheme-whitelist: null
-
-  # Specify a list of allowed functions. (deprecated)
-  # 指定允许的函数的白名单。
-  function-whitelist: null
 
   # -----------------------
   # Keyframes
   # -----------------------
 
   # Specify a pattern for keyframe names.
-  # 指定关键帧名的模式。
-  # TODO
   keyframes-name-pattern: null
 
   # -----------------------
@@ -333,18 +311,8 @@ rules:
   # Specify a list of allowed units.
   unit-allowed-list: null
 
-  # Specify a list of disallowed units. (deprecated)
-  # 指定禁用的单位的黑名单。
-  # 使用 unit-disallowed-list
-  # unit-blacklist: null
-
   # Specify a list of disallowed units.
   unit-disallowed-list: null
-
-  # Specify a list of allowed units. (deprecated)
-  # 指定允许的单位的白名单。
-  # 使用 unit-allowed-list
-  # unit-whitelist: null
 
   # -----------------------
   # Shorthand property
@@ -382,11 +350,6 @@ rules:
   # Specify a list of allowed properties.
   property-allowed-list: null
 
-  # Specify a list of disallowed properties. (deprecated)
-  # 指定禁用的属性的黑名单。
-  # 使用 property-disallowed-list
-  # property-blacklist: null
-
   # Specify a list of disallowed properties.
   property-disallowed-list: null
 
@@ -398,11 +361,6 @@ rules:
       ignoreProperties:
         - transform
         - columns
-
-  # Specify a list of allowed properties. (deprecated)
-  # 指定允许的属性的白名单。
-  # 使用 property-allowed-list
-  # property-whitelist: null
 
   # -----------------------
   # Declaration
@@ -423,34 +381,14 @@ rules:
   # Specify a list of allowed property and unit pairs within declarations.
   declaration-property-unit-allowed-list: null
 
-  # Specify a list of disallowed property and unit pairs within declarations. (deprecated)
-  # 指定声明内禁用的属性和单位对的黑名单。
-  # 使用 declaration-property-unit-disallowed-list
-  # declaration-property-unit-blacklist: null
-
   # Specify a list of disallowed property and unit pairs within declarations.
   declaration-property-unit-disallowed-list: null
-
-  # Specify a list of allowed property and unit pairs within declarations. (deprecated)
-  # 指定声明内允许的属性和单位对的白名单。
-  # 使用 declaration-property-unit-allowed-list
-  # declaration-property-unit-whitelist: null
 
   # Specify a list of allowed property and value pairs within declarations.
   declaration-property-value-allowed-list: null
 
-  # Specify a list of disallowed property and value pairs within declarations. (deprecated)
-  # 指定声明内禁用的属性和值对的黑名单。
-  # 使用 declaration-property-value-disallowed-list
-  # declaration-property-value-blacklist: null
-
   # Specify a list of disallowed property and value pairs within declarations.
   declaration-property-value-disallowed-list: null
-
-  # Specify a list of allowed property and value pairs within declarations. (deprecated)
-  # 指定声明内允许的属性和值对的白名单。
-  # 使用 declaration-property-value-allowed-list
-  # declaration-property-value-whitelist: null
 
   # -----------------------
   # Declaration block
@@ -470,18 +408,8 @@ rules:
   # Specify a list of allowed attribute operators.
   selector-attribute-operator-allowed-list: null
 
-  # Specify a list of disallowed attribute operators. (deprecated)
-  # 指定禁用的属性运算符的黑名单。
-  # 使用 selector-attribute-operator-disallowed-list
-  # selector-attribute-operator-blacklist: null
-
   # Specify a list of disallowed attribute operators.
   selector-attribute-operator-disallowed-list: null
-
-  # Specify a list of allowed attribute operators. (deprecated)
-  # 指定允许的属性运算符的白名单。
-  # 使用 selector-attribute-operator-allowed-list
-  # selector-attribute-operator-whitelist: null
 
   # Specify a pattern for class selectors.
   # 指定类选择器的模式。
@@ -490,18 +418,8 @@ rules:
   # Specify a list of allowed combinators.
   selector-combinator-allowed-list: null
 
-  # Specify a list of disallowed combinators. (deprecated)
-  # 指定禁用的组合选择器的黑名单。
-  # 使用 selector-combinator-disallowed-list
-  # selector-combinator-blacklist: null
-
   # Specify a list of disallowed combinators.
   selector-combinator-disallowed-list: null
-
-  # Specify a list of allowed combinators. (deprecated)
-  # 指定允许的组合选择器的白名单。
-  # 使用 selector-combinator-allowed-list
-  # selector-combinator-whitelist: null
 
   # Specify a pattern for ID selectors.
   # 指定 ID 选择器的模式。
@@ -525,7 +443,6 @@ rules:
 
   # Limit the number of adjacent empty lines within selectors (Autofixable).
   # 限制选择器中相邻空行的数量
-  # TODO
   selector-max-empty-lines: 0
 
   # Limit the number of ID selectors in a selector.
@@ -577,26 +494,11 @@ rules:
   # Specify a list of allowed pseudo-class selectors.
   selector-pseudo-class-allowed-list: null
 
-  # Specify a list of disallowed pseudo-class selectors. (deprecated)
-  # 指定禁用的伪类选择器的黑名单。
-  # 使用 selector-pseudo-class-disallowed-list
-  # selector-pseudo-class-blacklist: null
-
   # Specify a list of disallowed pseudo-class selectors.
   selector-pseudo-class-disallowed-list: null
 
-  # Specify a list of allowed pseudo-class selectors. (deprecated)
-  # 指定允许的伪类选择器的白名单。
-  # 使用 selector-pseudo-class-allowed-list
-  # selector-pseudo-class-whitelist: null
-
   # Specify a list of allowed pseudo-element selectors.
   selector-pseudo-element-allowed-list: null
-
-  # Specify a list of disallowed pseudo-element selectors. (deprecated)
-  # 指定禁用的伪元素选择器的黑名单。
-  # 使用 selector-pseudo-element-disallowed-list
-  # selector-pseudo-element-blacklist: null
 
   # Specify single or double colon notation for applicable pseudo-elements (Autofixable).
   # 指定伪元素适用单冒号还是双冒号表示法（可自动修复）。
@@ -605,11 +507,6 @@ rules:
   # Specify a list of disallowed pseudo-element selectors.
   selector-pseudo-element-disallowed-list: null
 
-  # Specify a list of allowed pseudo-element selectors. (deprecated)
-  # 指定允许的伪元素选择器的白名单。
-  # 使用 selector-pseudo-element-allowed-list
-  # selector-pseudo-element-whitelist:
-
   # -----------------------
   # Media feature
   # -----------------------
@@ -617,31 +514,15 @@ rules:
   # Specify a list of allowed media feature names.
   media-feature-name-allowed-list: null
 
-  # Specify a list of disallowed media feature names. (deprecated)
-  # 指定禁用的媒体功能名的黑名单。
-  # 使用 media-feature-name-disallowed-list
-  # media-feature-name-blacklist: null
-
   # Specify a list of disallowed media feature names.
   media-feature-name-disallowed-list: null
 
   # Disallow vendor prefixes for media feature names (Autofixable).
   # 禁止媒体功能名的浏览器引擎前缀。
-  # TODO
   media-feature-name-no-vendor-prefix: null
 
   # Specify a list of allowed media feature name and value pairs.
   media-feature-name-value-allowed-list: null
-
-  # Specify a list of allowed media feature name and value pairs. (deprecated)
-  # 指定允许的媒体功能名和值对的白名单。
-  # 使用 media-feature-name-value-allowed-list
-  # media-feature-name-value-whitelist: null
-
-  # Specify a list of allowed media feature names. (deprecated)
-  # 指定允许的媒体功能名的白名单。
-  # 使用 media-feature-name-allowed-list
-  # media-feature-name-whitelist: null
 
   # -----------------------
   # Custom media
@@ -658,11 +539,6 @@ rules:
   # Specify a list of allowed at-rules.
   at-rule-allowed-list: null
 
-  # Specify a list of disallowed at-rules. (deprecated)
-  # 指定禁用的@规则的黑名单。
-  # 使用 at-rule-disallowed-list
-  # at-rule-blacklist:
-
   # Specify a list of disallowed at-rules.
   at-rule-disallowed-list: null
 
@@ -671,17 +547,7 @@ rules:
   at-rule-no-vendor-prefix: true
 
   # Specify a list of required properties for an at-rule.
-  # TODO: SSS
   at-rule-property-required-list: null
-
-  # Specify a list of required properties for an at-rule. (deprecated)
-  # 使用 at-rule-property-required-list
-  # at-rule-property-requirelist: null
-
-  # Specify a list of allowed at-rules. (deprecated)
-  # 指定允许的@规则的白名单。
-  # 使用 at-rule-allowed-list
-  # at-rule-whitelist: null
 
   # -----------------------
   # Comment
@@ -689,11 +555,6 @@ rules:
 
   # Specify a pattern for comments.
   comment-pattern: null
-
-  # Specify a list of disallowed words within comments. (deprecated)
-  # 指定在注释中禁用的单词的黑名单。
-  # 使用 comment-word-disallowed-list
-  # comment-word-blacklist: null
 
   # Specify a list of disallowed words within comments.
   comment-word-disallowed-list: null
@@ -787,8 +648,11 @@ rules:
 
   # Require or disallow quotes for urls.
   # 要求或禁止 URL 的引号。
-  # TODO
-  function-url-quotes: null
+  function-url-quotes:
+    - never
+    -
+      except:
+        - empty
 
   # Require or disallow whitespace after functions (Autofixable).
   # 要求或禁止函数之后的空白符（可自动修复）。
@@ -1003,7 +867,6 @@ rules:
 
   # Require or disallow quotes for attribute values.
   # 要求或禁止属性值的引号。
-  # TODO
   # 关闭此项，允许 [href^=s] 类型的选择器
   selector-attribute-quotes: null
 
