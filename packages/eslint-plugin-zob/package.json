@@ -6,7 +6,8 @@
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xovel/zob.git"
+    "url": "https://github.com/xovel/zob.git",
+    "directory": "packages/eslint-plugin-zob"
   },
   "keywords": [
     "zob",

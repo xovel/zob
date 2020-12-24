@@ -5,7 +5,8 @@
   "author": "xovel <xovel@vip.qq.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xovel/zob.git"
+    "url": "https://github.com/xovel/zob.git",
+    "directory": "packages/stylelint-config-zob"
   },
   "peerDependencies": {
     "stylelint": "^13.8.0",

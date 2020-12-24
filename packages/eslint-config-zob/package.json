@@ -5,7 +5,8 @@
   "author": "xovel <xovel@vip.qq.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xovel/zob.git"
+    "url": "https://github.com/xovel/zob.git",
+    "directory": "packages/eslint-config-zob"
   },
   "peerDependencies": {
     "eslint": "^7.15.0",
