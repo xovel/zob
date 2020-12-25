@@ -2,7 +2,11 @@
 
 Stylelint config for zob system.
 
-## History
+## Changelog
+
+### v0.0.3
+
+- Update `order/order`, specify additional `border`, `padding`, `margin`, `overflow`, etc.
 
 ### v0.0.2
 
