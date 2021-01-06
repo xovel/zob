@@ -11,7 +11,17 @@ ESLint plugin for zob system.
 
 > 自动在 CJK 字符与英文字母、数字、符号之间插入空格，并修复部分中文语境下的排版问题。
 
+### [`zob/methods-property-casing`](docs/methods-property-casing.md)
+
+Enforce the casing of property for methods
+
+> 确保在对象 `methods` 中的键值名的命名风格（小驼峰）。
+
 ## History
+
+### v0.1.2
+
+- Add `methods-property-casing`.
 
 ### v0.1.1
 

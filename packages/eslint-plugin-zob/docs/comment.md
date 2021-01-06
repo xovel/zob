@@ -39,7 +39,7 @@ function demo(text) {
 // 这一个针对 1=1 的猜想
 ```
 
-### Incorrect
+## Incorrect
 
 ```js
 // xovel一时心血来潮写了这个插件
