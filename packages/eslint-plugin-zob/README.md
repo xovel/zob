@@ -19,7 +19,11 @@ Enforce the casing of property for methods
 
 ## History
 
-### v0.1.2
+### v0.2.1
+
+- Fix docs path for `methods-property-casing`
+
+### v0.2.0
 
 - Add `methods-property-casing`.
 

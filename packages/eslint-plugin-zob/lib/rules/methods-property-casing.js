@@ -10,7 +10,7 @@ module.exports = {
     docs: {
       description: "enforce the casing of property for methods",
       category: 'Stylistic Issues',
-      url: 'https://github.com/xovel/zob/blob/master/packages/eslint-plugin-zob/docs/camelcase-for-methods.md'
+      url: 'https://github.com/xovel/zob/blob/master/packages/eslint-plugin-zob/docs/methods-property-casing.md'
     },
     schema: [{
       type: 'object',
