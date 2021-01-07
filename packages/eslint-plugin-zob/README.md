@@ -17,11 +17,11 @@ Enforce the casing of property for methods
 
 > 确保在对象 `methods` 中的键值名的命名风格（小驼峰）。
 
-## History
+## Changelog
 
 ### v0.2.1
 
-- Fix docs path for `methods-property-casing`
+- Fix docs path for `methods-property-casing`.
 
 ### v0.2.0
 
