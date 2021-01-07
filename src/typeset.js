@@ -28,11 +28,14 @@ const unicodeList = [
   '\\u4DC0-\\u4DFF', // 易经六十四卦符号 Yijing Hexagram Symbols
   '\\u4E00-\\u9FFF', // CJK 统一表意符号，中文字符 (CJK Unified Ideographs)
   '\\uAC00-\\uD7AF', // 朝鲜文音节 Hangul Syllables
-  '\\uF900-\\uFAFF', // CJK 兼容象形文字 CJK Compatibility Ideograph
+  '\\uF900-\\uFAFF'  // CJK 兼容象形文字 CJK Compatibility Ideograph
+]
+// -->
+
+const cjkUnicodeSymbolList = [
   '\\uFE30-\\uFE4F', // CJK 兼容形式竖排样式的横排字符 CJK Compatibility Forms
   '\\uFF00-\\uFFEF'  // 半型及全型形式 Halfwidth and Fullwidth Forms
 ]
-// -->
 
 const unicodeExtList = [
   '\\u{1D300}-\\u{1D35F}', // 太玄经符号 Tai Xuan Jing Symbols,
@@ -43,6 +46,12 @@ const unicodeExtList = [
   '\\u{2CEB0}-\\u{2EBEF}', // Ext-F
   '\\u{2F800}-\\u{2FA1F}', // CJK Compatibility Ideographs Supplement
 ]
+
+function fn(s) {
+  const [a, b] = s.replace(/\\u/g, '0x').split('-').map(item => parseInt(item));
+  console.log([a, b])
+  for (let i = a; i <= b; i++) console.log(i, String.fromCharCode(i))
+}
 
 /*
 Plane 0, BMP (basic multilingual plane), U+0000 ~ U+FFFF, 包括了大多数的常用字符都在该平面中，以及少量的古语和罕见字符，也包括 CJK (中日统韩一表意文字).
@@ -228,18 +237,17 @@ function regex(input) {
 }
 
 const fixer = {
-  cjk: cjk,
+  cjk,
   punctuation: /(cjk) *([~!;,?]+) */g,
   punctuationSpecial: /(cjk) *([:.]) *(cjk)/g,
   quote: /(cjk)(['"])(.*?)(\2)/g,
   colon: /(cjk): *([A-Za-z0-9()])/g,
-  colonQuote: /(cjk) *[:：] *(['"])(.*?)(\2)/g,
-  dot: /([.]{2,}|\u2026)(cjk)/g,
-  hash: /(cjk)#(cjk+)#(cjk)/g,
+  conversation: /(cjk) *[:：] *(['"])(.*?)(\2)/g,
+  hashTopic: /(cjk)(#cjk+#)(cjk)/g,
   operator: /(cjk)([-+*=/\\|<>&])([A-Za-z0-9])/g,
   operatorAhead: /([A-Za-z0-9])([-+*=/\\|<>&])(cjk)/g,
   bracket: /(cjk)([()[\]{}])(cjk)/g,
-  middleDot: /(cjk) *([\u00b7\u2022\u2027]) *(cjk)/g,
+  middleDot: /(cjk) *[\u00b7\u2022\u2027] *(cjk)/g,
   percent: /(%)([A-Za-z])/g,
   alphabet: /(cjk)([A-Za-z])/g,
   alphabetAhead: /([A-Za-z])(cjk)/g,
@@ -254,21 +262,21 @@ Object.keys(fixer).forEach(key => {
 })
 
 const fullWidthCharMap = {
-  '~': '～',
-  '!': '！',
-  ';': '；',
-  ':': '：',
-  ',': '，',
-  '.': '。',
-  '?': '？',
-  '(': '（',
-  ')': '）',
-  '[': '【',
-  ']': '】',
-  '{': '｛',
-  '}': '｝',
-  '<': '《',
-  '>': '》'
+  '~': '\uFF5E', // '～'
+  '!': '\uFF01', // '！'
+  ';': '\uFF1B', // '；'
+  ':': '\uFF1A', // '：'
+  ',': '\uFF0C', // '，'
+  '.': '\u3002', // '。'
+  '?': '\uFF1F', // '？'
+  '(': '\uFF08', // '（'
+  ')': '\uFF09', // '）'
+  '[': '\u3010', // '【'
+  ']': '\u3011', // '】'
+  '{': '\uFF5B', // '｛'
+  '}': '\uFF5D', // '｝'
+  '<': '\u300A', // '《'
+  '>': '\u300B'  // '》'
 }
 
 const reSinleWidthChar = /[~!;:,.?]/g
@@ -277,71 +285,112 @@ function replaceFullWidthChar(text) {
   return text.replace(reSinleWidthChar, char => fullWidthCharMap[char])
 }
 
-function typeset(text, options = {}) {
+function addSpace(...args) {
+  return args.slice(1, -2).join(' ')
+}
+
+const defaults = {
+  alphabet: true,
+  number: true,
+  symbol: true
+}
+
+function typeset(text, config) {
 
   if (!text || !fixer.cjk.test(text)) {
     return text
   }
 
+  const options = {
+    ...defaults,
+    ...config
+  }
+
+  const COLON = '\uFF1A' // ：
+  const SINGLE_QUOTE_OPEN = '\u2018' // ‘
+  const SINGLE_QUOTE_CLOSE = '\u2019' // ’
+  const DOUBLE_QUOTE_OPEN = '\u201C' // “
+  const DOUBLE_QUOTE_CLOSE = '\u201D' // ”
+  const MIDDLE_DOT = '\u30FB' // ・'
+
   let result = text
 
-  // 替换结束性质的标点符号
-  result = result.replace(fixer.punctuation, (_, cjk, punctuation) => cjk + replaceFullWidthChar(punctuation))
+  if (options.punctuation) {
+    // 替换结束性质的标点符号
+    result = result.replace(fixer.punctuation, (_, cjk, punctuation) => cjk + replaceFullWidthChar(punctuation))
+    // 替换中间性质的标点符号
+    result = result.replace(fixer.punctuationSpecial, (_, cjkLeft, punctuation, cjkRight) => cjkLeft + fullWidthCharMap[punctuation] + cjkRight)
+  }
 
-  // 替换中间性质的标点符号
-  result = result.replace(fixer.punctuationSpecial, (_, cjkLeft, punctuation, cjkRight) => cjkLeft + fullWidthCharMap[punctuation] + cjkRight)
+  if (options.quote) {
+    // 引号
+    result = result.replace(fixer.quote, (_, cjk, quoteLeft, content) => {
+      if (quoteLeft === '"') {
+        return cjk + (options.doubleQuote || DOUBLE_QUOTE_OPEN) + content + (options.doubleQuoteClose || DOUBLE_QUOTE_CLOSE)
+      }
+      return cjk + (options.singleQuote || SINGLE_QUOTE_OPEN) + content + (options.singleQuoteClose || SINGLE_QUOTE_CLOSE)
+    })
+  }
 
-  // 引号
-  result = result.replace(fixer.quote, (_, cjk, quoteLeft, content) => {
-    if (quoteLeft === '"') {
-      return cjk + (options.doubleQuote || '“') + content + (options.doubleQuoteClose || '”')
-    }
-    return cjk + (options.singleQuote || '‘') + content + (options.singleQuoteClose || '’')
-  })
+  if (options.colon) {
+    // 特殊冒号
+    result = result.replace(fixer.colon, (_, cjk, char) => cjk + COLON + char)
+  }
 
-  // 特殊冒号
-  result = result.replace(fixer.colon, (_, cjk, char) => cjk + '：' + char)
+  if (options.conversation) {
+    // 冒号后跟引号
+    result = result.replace(fixer.conversation, (_, cjk, quoteLeft, content) => {
+      if (quoteLeft === '"') {
+        return cjk + COLON + (options.doubleQuote || DOUBLE_QUOTE_OPEN) + content + (options.doubleQuoteClose || DOUBLE_QUOTE_CLOSE)
+      }
+      return cjk + COLON + (options.singleQuote || SINGLE_QUOTE_OPEN) + content + (options.singleQuoteClose || SINGLE_QUOTE_CLOSE)
+    })
+  }
 
-  // 冒号后跟引号
-  result = result.replace(fixer.colonQuote, (_, cjk, quoteLeft, content) => {
-    if (quoteLeft === '"') {
-      return cjk + '：' + (options.doubleQuote || '“') + content + (options.doubleQuoteClose || '”')
-    }
-    return cjk + '：' + (options.singleQuote || '‘') + content + (options.singleQuoteClose || '’')
-  })
+  if (options.hashTopic) {
+    // 讨论主题性质的 # 符号
+    result = result.replace(fixer.hashTopic, addSpace)
+  }
 
-  // 连点符号
-  result = result.replace(fixer.dot, (_, dot, cjk) => dot + ' ' + cjk)
+  if (options.operator) {
+    // 操作符
+    result = result.replace(fixer.operator, addSpace)
+    // 操作符在前
+    result = result.replace(fixer.operatorAhead, addSpace)
+  }
 
-  // 讨论主题性质的 # 符号
-  result = result.replace(fixer.hash, (_, cjkLeft, cjkContent, cjkRight) => cjkLeft + ' #' + cjkContent + '# ' + cjkRight)
+  if (options.bracket) {
+    // 括号
+    result = result.replace(fixer.bracket, (_, cjkLeft, bracket, cjkRight) => cjkLeft + fullWidthCharMap[bracket] + cjkRight)
+  }
 
-  // 操作符
-  result = result.replace(fixer.operator, (_, cjk, operator, char) => cjk + ' ' + operator + ' ' + char)
+  if (options.middleDot) {
+    // 中缀点
+    result = result.replace(fixer.middleDot, (_, cjkLeft, cjkRight) => cjkLeft + MIDDLE_DOT + cjkRight)
+  }
 
-  // 操作符在前
-  result = result.replace(fixer.operatorAhead, (_, char, operator, cjk) => char + ' ' + operator + ' ' + cjk)
+  if (options.percent) {
+    // 百分号
+    result = result.replace(fixer.percent, addSpace)
+  }
 
-  // 括号
-  result = result.replace(fixer.bracket, (_, cjkLeft, bracket, cjkRight) => cjkLeft + fullWidthCharMap[bracket] + cjkRight)
+  if (options.alphabet) {
+    // 字母
+    result = result.replace(fixer.alphabet, addSpace)
+    result = result.replace(fixer.alphabetAhead, addSpace)
+  }
 
-  // 中缀点
-  result = result.replace(fixer.middleDot, (_, cjkLeft, middleDot, cjkRight) => cjkLeft + '・' + cjkRight)
+  if (options.number) {
+    // 数字
+    result = result.replace(fixer.number, addSpace)
+    result = result.replace(fixer.numberAhead, addSpace)
+  }
 
-  // 百分号
-  result = result.replace(fixer.percent, (_, percent, char) => percent + ' ' + char)
-
-  // 字母
-  result = result.replace(fixer.alphabet, (_, cjk, alphabet) => cjk + ' ' + alphabet)
-  result = result.replace(fixer.alphabetAhead, (_, alphabet, cjk) => alphabet + ' ' + cjk)
-
-  // 数字
-  result = result.replace(fixer.number, (_, cjk, number) => cjk + ' ' + number)
-  result = result.replace(fixer.numberAhead, (_, number, cjk) => number + ' ' + cjk)
-
-  // 英文符号
-  result = result.replace(fixer.symbol, (_, cjk, symbol) => cjk + ' ' + symbol)
-  result = result.replace(fixer.symbolAhead, (_, symbol, cjk) => symbol + ' ' + cjk)
+  if (options.symbol) {
+    // 英文符号
+    result = result.replace(fixer.symbol, addSpace)
+    result = result.replace(fixer.symbolAhead, addSpace)
+  }
 
   return result
 }

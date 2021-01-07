@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-zob",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "ESLint plugin for zob system.",
   "author": "xovel <xovel@vip.qq.com>",
   "main": "./lib/index.js",
@@ -25,6 +25,6 @@
     "mocha": "^8.2.1"
   },
   "peerDependencies": {
-    "eslint": "^7.15.0"
+    "eslint": ">=7.15.0"
   }
 }

@@ -27,7 +27,7 @@ function demo(text) {
         {
           code: `// xovel一时心血来潮写了这个插件`,
           errors: [{
-            message: 'Need space',
+            message: 'Typeset or space need to be fixed.',
             type: 'Line'
           }],
           output: '// xovel 一时心血来潮写了这个插件'
@@ -35,7 +35,7 @@ function demo(text) {
         {
           code: `/* 我是一个demo */`,
           errors: [{
-            message: 'Need space',
+            message: 'Typeset or space need to be fixed.',
             type: 'Block'
           }],
           output: '/* 我是一个 demo */'

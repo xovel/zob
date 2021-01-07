@@ -19,6 +19,11 @@ Enforce the casing of property for methods
 
 ## Changelog
 
+### v0.3.0
+
+- Add options to `comment`.
+- Fix test case of `comment`.
+
 ### v0.2.1
 
 - Fix docs path for `methods-property-casing`.
