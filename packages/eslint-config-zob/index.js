@@ -257,7 +257,7 @@ module.exports = {
     'no-shadow': [
       2,
       {
-        builtinGlobals: true,
+        builtinGlobals: false,
         hoist: 'functions',
         allow: [
           'err',
@@ -266,7 +266,10 @@ module.exports = {
           'reject',
           'done',
           'callback',
-          'cb'
+          'cb',
+          'item',
+          'index',
+          'res'
         ]
       }
     ],

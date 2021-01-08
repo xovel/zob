@@ -63,15 +63,7 @@ module.exports = {
       2,
       'double'
     ],
-    'vue/html-self-closing': [
-      2,
-      {
-        html: {
-          void: 'always',
-          normal: 'never'
-        }
-      }
-    ],
+    'vue/html-self-closing': 2,
     'vue/max-attributes-per-line': 0,
     'vue/multiline-html-element-content-newline': 0,
     'vue/mustache-interpolation-spacing': 2,

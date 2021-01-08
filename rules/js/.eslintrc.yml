@@ -150,6 +150,7 @@ rules:
 
   # disallow characters which are made with multiple code points in character class syntax
   # 不允许在字符类语法中出现由多个代码点组成的字符
+  # 正则表达式中禁止使用令人疑惑的字符集
   no-misleading-character-class: 2
 
   # disallow calling global object properties as functions
@@ -610,7 +611,7 @@ rules:
   no-shadow:
     - 2
     -
-      builtinGlobals: true
+      builtinGlobals: false
       hoist: functions
       allow:
         - err
@@ -620,6 +621,9 @@ rules:
         - done
         - callback
         - cb
+        - item
+        - index
+        - res
 
   # disallow identifiers from shadowing restricted names
   # 禁止将标识符定义为受限的名字

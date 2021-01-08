@@ -398,4 +398,11 @@ function typeset(text, config) {
 module.exports = typeset
 // -->
 
-console.log(typeset(' 我是一个demo '))
+function test(text, options) {
+  console.log(typeset(text, options))
+}
+
+test(' 我是一个demo ')
+
+test('平台0：H5')
+test('年+5月', {operator: true})

@@ -158,12 +158,7 @@ rules:
     - double
 
   # 无内容的标签使用自闭合
-  vue/html-self-closing:
-    - 2
-    -
-      html:
-        void: always
-        normal: never
+  vue/html-self-closing: 2
 
   # template 中的标签属性的每行最大个数
   vue/max-attributes-per-line: 0

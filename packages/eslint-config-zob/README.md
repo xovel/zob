@@ -4,6 +4,11 @@ ESLint Config for zob system.
 
 ## Changelog
 
+### v0.1.1
+
+- Update `no-shadow`, add `item`, `index`, `res` to `allow`, set `builtinGlobals` to `false`.
+- Use `vue/html-self-closing` default options.
+
 ### v0.1.0
 
 - Upgrade `parserOptions.ecmaVersion` to `2021`.
