@@ -1,0 +1,27 @@
+{
+  "name": "zob-highlightjs",
+  "version": "0.0.1",
+  "description": "highlightjs for zob system.",
+  "author": "xovel <xovel@vip.qq.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xovel/zob.git",
+    "directory": "packages/zob-highlightjs"
+  },
+  "peerDependencies": {
+    "highlight.js": ">=10.6.0"
+  },
+  "keywords": [
+    "zob",
+    "highlight.js",
+    "highlight",
+    "pug",
+    "vue",
+    "syntax"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xovel/zob/issues"
+  },
+  "homepage": "https://github.com/xovel/zob#readme"
+}
