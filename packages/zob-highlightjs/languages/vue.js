@@ -1,5 +1,9 @@
 'use strict'
 
+/**
+ * @source: https://github.com/highlightjs/highlightjs-vue
+ */
+
 function vue(hljs) {
   return {
     name: 'Vue',
