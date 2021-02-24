@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-zob",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "ESLint config for zob system.",
   "author": "xovel <xovel@vip.qq.com>",
   "repository": {
@@ -9,7 +9,8 @@
     "directory": "packages/eslint-config-zob"
   },
   "peerDependencies": {
-    "eslint": "^7.15.0",
+    "babel-eslint": ">=10.1.0",
+    "eslint": ">=7.15.0",
     "eslint-plugin-vue": ">=5.8.0"
   },
   "keywords": [
