@@ -4,6 +4,11 @@ ESLint Config for zob system.
 
 ## Changelog
 
+### v0.2.0
+
+- Bump `eslint` to `>=7.15.0`.
+- Add `babel-eslint` as a peer dependency.
+
 ### v0.1.1
 
 - Update `no-shadow`, add `item`, `index`, `res` to `allow`, set `builtinGlobals` to `false`.
