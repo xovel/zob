@@ -13,6 +13,10 @@ require('zob-highlightjs')(hljs)
 
 ## Changelog
 
+### v0.0.2
+
+- Use options to registerLanguage
+
 ### v0.0.1
 
 First version.

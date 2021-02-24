@@ -1,7 +1,7 @@
 'use strict'
 
 /**
- * @source: https://github.com/highlightjs/highlightjs-vue
+ * @see: https://github.com/highlightjs/highlightjs-vue
  */
 
 function vue(hljs) {

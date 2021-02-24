@@ -1,7 +1,7 @@
 'use strict'
 
 /**
- * @source: https://github.com/ztmd/highlight-pug
+ * @see: https://github.com/ztmd/highlight-pug
 */
 
 function pug(hljs) {
