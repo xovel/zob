@@ -47,6 +47,8 @@ rules:
 
   # disallow the use of `console`
   # 禁用 console
+  # 开发时可以借助于 console 进行日志输出
+  # 打包构建的时候可以通过压缩工具移除该方法
   no-console: 0
 
   # disallow constant expressions in conditions
@@ -54,6 +56,8 @@ rules:
   no-constant-condition:
     - 2
     -
+      # 允许在循环中使用常量表达式
+      # 比如某些特定的场景下使用永真循环
       checkLoops: false
 
   # disallow control characters in regular expressions
