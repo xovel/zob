@@ -19,6 +19,10 @@ Enforce the casing of property for methods
 
 ## Changelog
 
+### v0.4.0
+
+- Add rule `vue-options`.
+
 ### v0.3.0
 
 - Add options to `comment`.
