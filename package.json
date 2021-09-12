@@ -1,6 +1,6 @@
 {
   "name": "zob",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "description": "A style guide for coding and writing.",
   "author": "xovel <xovel@vip.qq.com>",
@@ -15,6 +15,9 @@
   "keywords": [
     "zob",
     "js"
+  ],
+  "files": [
+    "/guide"
   ],
   "license": "MIT",
   "bugs": {
