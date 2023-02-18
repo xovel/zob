@@ -4,6 +4,10 @@ ESLint Config for zob system.
 
 ## Changelog
 
+### v0.3.0
+
+- `babel-eslint` is now `@babel/eslint-parser`.
+
 ### v0.2.0
 
 - Bump `eslint` to `>=7.15.0`.

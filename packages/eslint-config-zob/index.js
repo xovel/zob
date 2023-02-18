@@ -5,14 +5,13 @@ module.exports = {
   env: {
     node: true,
     browser: true,
-    es6: true,
+    es2022: true,
     jquery: true,
     amd: true,
     mocha: true
   },
   parserOptions: {
-    parser: 'babel-eslint',
-    ecmaVersion: 2021,
+    parser: '@babel/eslint-parser',
     sourceType: 'module'
   },
   rules: {
